@@ -1,0 +1,78 @@
+// Prisma Schema for GowriSEOPortfolio (Choicy Digital Agency Theme)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  title        String
+  tagline      String
+  category     String   // "SEO Tools" | "Full-Stack Apps" | "Design Systems"
+  description  String
+  client       String?
+  duration     String?
+  thumbnailUrl String
+  liveUrl      String
+  githubUrl    String?
+  featured     Boolean  @default(false)
+  tags         String   // JSON string of string array e.g. ["Next.js", "TypeScript", "Tailwind"]
+  challenges   String
+  solution     String
+  metrics      String   // JSON string of metric objects e.g. [{"label":"Organic Traffic","value":"+340%"},...]
+  architecture String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  iconName    String   // Lucide icon key e.g. "Search", "Code", "Zap", "Layers"
+  features    String   // JSON string of string array
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Experience {
+  id           String   @id @default(cuid())
+  company      String
+  role         String
+  period       String
+  description  String
+  achievements String   // JSON string of string array
+  technologies String   // JSON string of string array
+  isCurrent    Boolean  @default(false)
+  order        Int      @default(0)
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  company   String
+  avatarUrl String
+  content   String
+  rating    Int      @default(5)
+  featured  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  service   String?
+  message   String
+  status    String   @default("PENDING") // PENDING, READ, REPLIED
+  createdAt DateTime @default(now())
+}
