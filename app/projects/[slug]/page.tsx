@@ -44,7 +44,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     orderBy: { createdAt: "desc" },
   });
 
-  const currentIndex = allProjects.findIndex((p) => p.slug === project.slug);
+  const currentIndex = allProjects.findIndex((p: { slug: any; }) => p.slug === project.slug);
   const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
   const prevProject =
     allProjects[(currentIndex - 1 + allProjects.length) % allProjects.length];
