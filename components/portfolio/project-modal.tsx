@@ -38,7 +38,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             onClick={() => setActiveTab("breakdown")}
             className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === "breakdown"
-                ? "bg-emerald-500 text-slate-950 shadow-md"
+                ? "bg-orange-500 text-slate-950 font-bold shadow-md"
                 : "text-slate-300 hover:text-white"
             }`}
           >
@@ -48,7 +48,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             onClick={() => setActiveTab("embed")}
             className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === "embed"
-                ? "bg-emerald-500 text-slate-950 shadow-md"
+                ? "bg-orange-500 text-slate-950 font-bold shadow-md"
                 : "text-slate-300 hover:text-white"
             }`}
           >
@@ -60,7 +60,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           href={project.liveUrl}
           target="_blank"
           rel="noreferrer"
-          className="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1 px-3"
+          className="text-xs font-mono text-orange-400 hover:underline flex items-center gap-1 px-3"
         >
           Open External Tab <ExternalLink className="w-3.5 h-3.5" />
         </a>
@@ -107,7 +107,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 {project.category}
               </Badge>
               <h3 className="text-2xl font-extrabold text-white">{project.title}</h3>
-              <p className="text-sm font-mono text-emerald-400">{project.tagline}</p>
+              <p className="text-sm font-mono text-orange-400">{project.tagline}</p>
             </div>
           </div>
 
@@ -116,7 +116,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             <div className="grid grid-cols-3 gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/10">
               {parsedMetrics.map((m, idx) => (
                 <div key={idx} className="text-center">
-                  <div className="text-2xl font-extrabold text-emerald-400">{m.value}</div>
+                  <div className="text-2xl font-extrabold text-orange-400">{m.value}</div>
                   <div className="text-xs font-mono text-slate-400 mt-0.5">{m.label}</div>
                 </div>
               ))}
@@ -139,7 +139,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             </div>
             <div>
               <span className="text-slate-500 block">STATUS</span>
-              <span className="text-emerald-400 font-medium">Production Live</span>
+              <span className="text-orange-400 font-medium">Production Live</span>
             </div>
           </div>
 
@@ -163,8 +163,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/20">
-              <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+            <div className="p-4 rounded-xl bg-orange-950/20 border border-orange-500/20">
+              <h4 className="text-xs font-bold text-orange-400 uppercase tracking-wider">
                 The Architecture Solution
               </h4>
               <p className="text-sm text-slate-300 mt-1 leading-relaxed">

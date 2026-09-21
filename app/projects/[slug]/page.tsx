@@ -63,7 +63,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         <div>
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:underline"
+            className="inline-flex items-center gap-2 text-xs font-mono text-orange-400 hover:underline"
           >
             <ArrowLeft className="w-4 h-4" /> Back to All Portfolio Works
           </Link>
@@ -72,7 +72,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         {/* Case Study Hero */}
         <div className="space-y-6">
           <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="emerald">{project.category}</Badge>
+            <Badge variant="orange">{project.category}</Badge>
             {project.featured && <Badge variant="purple">Featured Case Study</Badge>}
           </div>
 
@@ -80,7 +80,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             {project.title}
           </h1>
 
-          <p className="text-xl font-mono text-emerald-400 max-w-3xl">
+          <p className="text-xl font-mono text-orange-400 max-w-3xl">
             {project.tagline}
           </p>
 
@@ -117,7 +117,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 p-8 rounded-3xl bg-[#121318] border border-white/10 backdrop-blur-xl">
             {parsedMetrics.map((metric, idx) => (
               <div key={idx} className="text-center sm:text-left space-y-1">
-                <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400">
+                <div className="text-3xl sm:text-4xl font-extrabold text-orange-400">
                   {metric.value}
                 </div>
                 <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
@@ -144,7 +144,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           </div>
           <div>
             <span className="text-slate-500 block">ENGINEERING SCOPE</span>
-            <span className="text-emerald-400 font-semibold">Full-Stack & Technical SEO</span>
+            <span className="text-orange-400 font-semibold">Full-Stack & Technical SEO</span>
           </div>
         </div>
 
@@ -154,7 +154,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             {/* Executive Summary */}
             <div className="space-y-3">
               <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-                <Layers className="w-6 h-6 text-emerald-400" /> Executive Summary
+                <Layers className="w-6 h-6 text-orange-400" /> Executive Summary
               </h2>
               <p className="text-slate-300 leading-relaxed text-base">
                 {project.description}
@@ -172,9 +172,9 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </GlassCard>
 
             {/* The Solution */}
-            <GlassCard glowColor="emerald" className="p-8 space-y-3">
-              <h3 className="text-lg font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" /> The Technical Solution
+            <GlassCard glowColor="orange" className="p-8 space-y-3">
+              <h3 className="text-lg font-bold text-orange-400 uppercase tracking-wider flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-orange-400" /> The Technical Solution
               </h3>
               <p className="text-slate-300 leading-relaxed text-sm">
                 {project.solution}
@@ -226,7 +226,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           {prevProject && (
             <Link href={`/projects/${prevProject.slug}`} className="group">
               <span className="text-xs font-mono text-slate-500 uppercase block">Previous Case Study</span>
-              <span className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-1">
+              <span className="text-sm font-bold text-white group-hover:text-orange-400 transition-colors flex items-center gap-1">
                 &larr; {prevProject.title}
               </span>
             </Link>
@@ -234,7 +234,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
           {nextProject && (
             <Link href={`/projects/${nextProject.slug}`} className="group text-right">
               <span className="text-xs font-mono text-slate-500 uppercase block">Next Case Study</span>
-              <span className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-1">
+              <span className="text-sm font-bold text-white group-hover:text-orange-400 transition-colors flex items-center gap-1">
                 {nextProject.title} &rarr;
               </span>
             </Link>

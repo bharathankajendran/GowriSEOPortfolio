@@ -18,13 +18,13 @@
     color: #F3F4F6;
     font-family: var(--font-outfit), system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
-    selection-background-color: #10B981;
+    selection-background-color: #F97316;
     selection-color: #0A0A0C;
   }
 
   ::selection {
-    background: rgba(16, 185, 129, 0.3);
-    color: #34D399;
+    background: rgba(249, 115, 22, 0.3);
+    color: #FB923C;
   }
 }
 
@@ -42,8 +42,8 @@
 
 .glass-panel-hover:hover {
   background: rgba(24, 26, 34, 0.85);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.15);
+  border-color: rgba(249, 115, 22, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(249, 115, 22, 0.15);
 }
 
 .text-gradient {
@@ -52,8 +52,9 @@
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-emerald {
-  background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #059669 100%);
+.text-gradient-emerald,
+.text-gradient-orange {
+  background: linear-gradient(135deg, #FB923C 0%, #F97316 50%, #EA580C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -82,7 +83,7 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #10B981;
+  background: #F97316;
 }
 
 /* Grid Pattern Background overlay */

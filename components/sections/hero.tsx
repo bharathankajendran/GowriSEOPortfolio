@@ -5,14 +5,21 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, Search, Zap, Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Flower3DBackground } from "@/components/ui/flower-3d";
+import { TypewriterHeadline } from "@/components/ui/typewriter-headline";
 
 export const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden bg-grid-pattern">
+    <section id="hero" className="relative min-h-screen pt-40 pb-20 flex items-center justify-center overflow-hidden bg-grid-pattern">
+      {/* 3D Particle Flower Model Background */}
+      <div className="absolute inset-0 z-0 opacity-90">
+        <Flower3DBackground />
+      </div>
+
       {/* Glow Mesh backgrounds */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-choicy-glow blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
-      <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow" style={{ animationDelay: "2s" }} />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-choicy-glow blur-3xl pointer-events-none z-0 opacity-50" />
+      <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-0" />
+      <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-0" style={{ animationDelay: "2s" }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Availability Badge */}
@@ -23,22 +30,19 @@ export const HeroSection = () => {
           className="inline-flex items-center gap-2 mb-6"
         >
           <Badge variant="emerald" className="px-4 py-1.5 text-sm gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="w-2 h-2 rounded-full bg-orange-400 animate-ping" />
             Available for Select Client Projects & Full-Stack Contracts
           </Badge>
         </motion.div>
 
-        {/* Main Hero Headline */}
-        <motion.h1
+        {/* Main Hero Headline with Dynamic Typewriter & UI Letter Jumps */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] max-w-5xl mx-auto"
         >
-          Architecting High-Scale <br />
-          <span className="text-gradient-emerald">Next.js Web Apps</span> &{" "}
-          <span className="text-gradient-purple">SEO Dominance</span>
-        </motion.h1>
+          <TypewriterHeadline />
+        </motion.div>
 
         {/* Tagline / Subheading */}
         <motion.p
@@ -58,7 +62,7 @@ export const HeroSection = () => {
           className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-400"
         >
           <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-            <Code2 className="w-4 h-4 text-emerald-400" /> Next.js 14 App Router
+            <Code2 className="w-4 h-4 text-orange-400" /> Next.js 14 App Router
           </span>
           <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
             <Search className="w-4 h-4 text-cyan-400" /> Technical SEO & Schema
@@ -99,7 +103,7 @@ export const HeroSection = () => {
             href="https://github.com"
             target="_blank"
             rel="noreferrer"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 hover:text-emerald-400 transition-all hover:scale-110"
+            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
             aria-label="GitHub"
           >
             <Github className="w-5 h-5" />
@@ -108,7 +112,7 @@ export const HeroSection = () => {
             href="https://linkedin.com"
             target="_blank"
             rel="noreferrer"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 hover:text-emerald-400 transition-all hover:scale-110"
+            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
             aria-label="LinkedIn"
           >
             <Linkedin className="w-5 h-5" />
@@ -117,14 +121,14 @@ export const HeroSection = () => {
             href="https://twitter.com"
             target="_blank"
             rel="noreferrer"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 hover:text-emerald-400 transition-all hover:scale-110"
+            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
             aria-label="Twitter"
           >
             <Twitter className="w-5 h-5" />
           </a>
           <a
             href="mailto:contact@gowriseo.com"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 hover:text-emerald-400 transition-all hover:scale-110"
+            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
             aria-label="Email"
           >
             <Mail className="w-5 h-5" />

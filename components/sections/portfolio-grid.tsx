@@ -38,11 +38,11 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
     <section id="projects" className="py-24 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center space-y-4 mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono bg-orange-500/10 text-orange-400 border border-orange-500/20">
           <Sparkles className="w-3.5 h-3.5" /> Featured Works & Case Studies
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Engineered for <span className="text-gradient-emerald">Performance</span> &{" "}
+          Engineered for <span className="text-gradient-orange">Performance</span> &{" "}
           <span className="text-gradient-purple">Rankings</span>
         </h2>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
@@ -61,7 +61,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
               onClick={() => setSelectedCategory(cat.label)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                 isActive
-                  ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-lg shadow-emerald-500/20 scale-105"
+                  ? "bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-bold shadow-lg shadow-orange-500/20 scale-105"
                   : "bg-white/[0.04] text-slate-400 hover:text-white border border-white/10 hover:bg-white/[0.08]"
               }`}
             >

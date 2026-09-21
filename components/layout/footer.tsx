@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Github, Linkedin, Twitter, Mail, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { G2VertexLogo } from "@/components/ui/g2-vertex-logo";
 
 export const Footer = () => {
   return (
@@ -31,12 +32,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           <div className="space-y-4 md:col-span-2">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center font-bold text-slate-950">
-                G
-              </div>
-              <span className="text-xl font-bold text-white tracking-tight">
-                GOWRI <span className="text-emerald-400 font-mono text-sm">.SEO</span>
-              </span>
+              <G2VertexLogo variant="full" size="lg" />
             </Link>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
               Senior Full-Stack Next.js Architect & Technical SEO Strategist. Specializing in high-performance web applications, sub-second latency, and explosive search visibility.

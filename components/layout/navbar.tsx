@@ -3,10 +3,19 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { G2VertexLogo } from "@/components/ui/g2-vertex-logo";
 
-export const Navbar = () => {
+export interface NavbarProps {
+  activeTab?: string;
+  onTabChange?: (tab: string) => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({
+  activeTab = "works",
+  onTabChange,
+}) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -19,12 +28,24 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: "Works", href: "#projects" },
-    { label: "Services", href: "#services" },
-    { label: "Experience", href: "#experience" },
-    { label: "Reviews", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", key: "home", href: "/" },
+    { label: "Works", key: "works", href: "#projects" },
+    { label: "Services", key: "services", href: "#services" },
+    { label: "Experience", key: "experience", href: "#experience" },
+    { label: "Reviews", key: "reviews", href: "#testimonials" },
+    { label: "Contact", key: "contact", href: "#contact" },
   ];
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+    key: string
+  ) => {
+    if (onTabChange) {
+      e.preventDefault();
+      onTabChange(key);
+      setMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header
@@ -37,42 +58,42 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-[1px] shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-[#0A0A0C] rounded-[11px] flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-emerald-400" />
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold text-white tracking-tight flex items-center gap-1">
-                GOWRI <span className="text-emerald-400 font-mono text-sm">.SEO</span>
-              </span>
-              <span className="text-[10px] text-slate-400 font-mono tracking-wider uppercase">
-                Full-Stack & SEO
-              </span>
-            </div>
-          </Link>
+          <button
+            onClick={(e) => handleNavClick(e, "home")}
+            className="flex items-center gap-2 group cursor-pointer text-left focus:outline-none"
+          >
+            <G2VertexLogo variant="compact" size="md" />
+          </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-md">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors rounded-full hover:bg-white/5"
-              >
-                {link.label}
-              </a>
-            ))}
+          <nav className="hidden md:flex items-center gap-1.5 bg-white/[0.04] border border-white/10 rounded-full p-1.5 backdrop-blur-md">
+            {navLinks.map((link) => {
+              const isActive = activeTab === link.key;
+              return (
+                <button
+                  key={link.key}
+                  onClick={(e) => handleNavClick(e, link.key)}
+                  className={`px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? "bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-bold shadow-md shadow-orange-500/25 scale-105"
+                      : "text-slate-300 hover:text-orange-400 hover:bg-white/5"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Action CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <a href="#contact">
-              <Button variant="primary" size="sm">
-                Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
-              </Button>
-            </a>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={(e) => handleNavClick(e, "contact")}
+            >
+              Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
+            </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -96,22 +117,30 @@ export const Navbar = () => {
             className="md:hidden bg-[#0D0F14]/95 border-b border-white/10 backdrop-blur-2xl"
           >
             <div className="px-4 pt-4 pb-6 space-y-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-2.5 text-base font-medium text-slate-200 hover:text-emerald-400 hover:bg-white/5 rounded-xl transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeTab === link.key;
+                return (
+                  <button
+                    key={link.key}
+                    onClick={(e) => handleNavClick(e, link.key)}
+                    className={`block w-full text-left px-4 py-2.5 text-base font-semibold rounded-xl transition-all ${
+                      isActive
+                        ? "bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-bold"
+                        : "text-slate-200 hover:text-orange-400 hover:bg-white/5"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                );
+              })}
               <div className="pt-2">
-                <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="primary" className="w-full">
-                    Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
-                  </Button>
-                </a>
+                <Button
+                  variant="primary"
+                  className="w-full"
+                  onClick={(e) => handleNavClick(e, "contact")}
+                >
+                  Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
+                </Button>
               </div>
             </div>
           </motion.div>

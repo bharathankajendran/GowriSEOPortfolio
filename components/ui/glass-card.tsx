@@ -4,17 +4,18 @@ import { cn } from "@/lib/utils";
 interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
-  glowColor?: "emerald" | "purple" | "cyan" | "none";
+  glowColor?: "emerald" | "orange" | "purple" | "cyan" | "none";
 }
 
 export const GlassCard: React.FC<GlassCardProps> = ({
   children,
   className,
-  glowColor = "emerald",
+  glowColor = "orange",
   ...props
 }) => {
   const glowStyles = {
-    emerald: "hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]",
+    emerald: "hover:border-orange-500/40 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]",
+    orange: "hover:border-orange-500/40 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]",
     purple: "hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]",
     cyan: "hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]",
     none: "",

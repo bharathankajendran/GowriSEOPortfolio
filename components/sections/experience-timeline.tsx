@@ -55,17 +55,17 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({
               className="relative group"
             >
               {/* Glowing Timeline Node Dot */}
-              <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-[#0A0A0C] border-2 border-emerald-400 flex items-center justify-center group-hover:scale-125 group-hover:border-cyan-400 transition-all shadow-[0_0_15px_rgba(16,185,129,0.5)]">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 group-hover:bg-cyan-400" />
+              <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-[#0A0A0C] border-2 border-orange-400 flex items-center justify-center group-hover:scale-125 group-hover:border-cyan-400 transition-all shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                <div className="w-2 h-2 rounded-full bg-orange-400 group-hover:bg-cyan-400" />
               </div>
 
               {/* Period Tag on Desktop Left */}
               <div className="hidden md:block absolute -left-48 top-1 text-right w-36">
-                <span className="text-xs font-mono text-emerald-400 flex items-center justify-end gap-1">
+                <span className="text-xs font-mono text-orange-400 flex items-center justify-end gap-1">
                   <Calendar className="w-3.5 h-3.5" /> {exp.period}
                 </span>
                 {exp.isCurrent && (
-                  <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                  <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-mono bg-orange-500/10 text-orange-300 border border-orange-500/20">
                     CURRENT
                   </span>
                 )}
@@ -79,11 +79,11 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({
                       <Briefcase className="w-5 h-5 text-cyan-400" />
                       {exp.role}
                     </h3>
-                    <p className="text-sm font-semibold text-emerald-400">{exp.company}</p>
+                    <p className="text-sm font-semibold text-orange-400">{exp.company}</p>
                   </div>
                   {/* Period Tag on Mobile */}
                   <div className="md:hidden flex items-center gap-2 text-xs font-mono text-slate-400">
-                    <Calendar className="w-3.5 h-3.5 text-emerald-400" /> {exp.period}
+                    <Calendar className="w-3.5 h-3.5 text-orange-400" /> {exp.period}
                   </div>
                 </div>
 
@@ -96,7 +96,7 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({
                   <div className="space-y-2 mb-4">
                     {achievements.map((ach, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
                         <span>{ach}</span>
                       </div>
                     ))}

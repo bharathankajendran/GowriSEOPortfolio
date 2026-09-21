@@ -102,7 +102,7 @@ export const ServicesSection: React.FC<ServicesProps> = ({
                     <div className="pt-4 border-t border-white/5 space-y-2">
                       {parsedFeatures.map((feat) => (
                         <div key={feat} className="flex items-center gap-2 text-xs text-slate-300">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0" />
                           <span>{feat}</span>
                         </div>
                       ))}

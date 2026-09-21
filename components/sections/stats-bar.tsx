@@ -11,7 +11,7 @@ export const StatsBar = () => {
       value: "45+",
       label: "Projects Completed",
       subtext: "Full-Stack Apps & SEO Systems",
-      color: "text-emerald-400",
+      color: "text-orange-400",
     },
     {
       icon: TrendingUp,

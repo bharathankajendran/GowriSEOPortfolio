@@ -83,7 +83,7 @@ export const TestimonialsSection: React.FC<TestimonialsProps> = ({
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4 pt-6 border-t border-white/10">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-400 shrink-0">
+                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-orange-400 shrink-0">
                     <Image
                       src={current.avatarUrl}
                       alt={current.name}
@@ -93,7 +93,7 @@ export const TestimonialsSection: React.FC<TestimonialsProps> = ({
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-white">{current.name}</h4>
-                    <p className="text-xs font-mono text-emerald-400">
+                    <p className="text-xs font-mono text-orange-400">
                       {current.role} &bull; <span className="text-slate-300">{current.company}</span>
                     </p>
                   </div>
@@ -111,7 +111,7 @@ export const TestimonialsSection: React.FC<TestimonialsProps> = ({
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   className={`h-2 rounded-full transition-all cursor-pointer ${
-                    idx === currentIndex ? "w-8 bg-emerald-400" : "w-2 bg-white/20 hover:bg-white/40"
+                    idx === currentIndex ? "w-8 bg-orange-400" : "w-2 bg-white/20 hover:bg-white/40"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -122,14 +122,14 @@ export const TestimonialsSection: React.FC<TestimonialsProps> = ({
             <div className="flex items-center gap-3">
               <button
                 onClick={handlePrev}
-                className="p-3 rounded-full bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 text-white transition-all cursor-pointer"
+                className="p-3 rounded-full bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-white/10 text-white transition-all cursor-pointer"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={handleNext}
-                className="p-3 rounded-full bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 text-white transition-all cursor-pointer"
+                className="p-3 rounded-full bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-white/10 text-white transition-all cursor-pointer"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5" />

@@ -65,7 +65,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -73,7 +73,8 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${outfit.variable} font-sans bg-[#0A0A0C] text-slate-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-400`}
+        suppressHydrationWarning
+        className={`${outfit.variable} font-sans bg-[#0A0A0C] text-slate-100 antialiased selection:bg-orange-500/30 selection:text-orange-400`}
       >
         {children}
       </body>

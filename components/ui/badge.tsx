@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: "emerald" | "purple" | "cyan" | "slate";
+  variant?: "emerald" | "orange" | "purple" | "cyan" | "slate";
   className?: string;
 }
 
@@ -13,7 +13,8 @@ export const Badge: React.FC<BadgeProps> = ({
   className,
 }) => {
   const variants = {
-    emerald: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+    emerald: "bg-orange-500/10 text-orange-400 border-orange-500/30",
+    orange: "bg-orange-500/10 text-orange-400 border-orange-500/30",
     purple: "bg-purple-500/10 text-purple-300 border-purple-500/30",
     cyan: "bg-cyan-500/10 text-cyan-300 border-cyan-500/30",
     slate: "bg-white/5 text-slate-300 border-white/10",

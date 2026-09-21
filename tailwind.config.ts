@@ -18,10 +18,11 @@ const config: Config = {
           foreground: "#64748B"
         },
         accent: {
-          emerald: "#10B981",
+          orange: "#F97316",
+          emerald: "#F97316",
           purple: "#8B5CF6",
           cyan: "#06B6D4",
-          amber: "#F59E0B"
+          amber: "#FF7700"
         }
       },
       fontFamily: {
@@ -31,7 +32,7 @@ const config: Config = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "choicy-glow": "radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15) 0%, rgba(139, 92, 246, 0.1) 35%, rgba(10, 10, 12, 0) 70%)",
+        "choicy-glow": "radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.2) 0%, rgba(139, 92, 246, 0.1) 35%, rgba(10, 10, 12, 0) 70%)",
         "glass-gradient": "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)",
       },
       animation: {

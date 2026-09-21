@@ -75,7 +75,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <div className="absolute top-4 right-4 z-10 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={() => onQuickView(project)}
-              className="p-2.5 rounded-full bg-slate-900/80 text-white hover:bg-emerald-500 hover:text-slate-950 backdrop-blur-md transition-all shadow-lg cursor-pointer"
+              className="p-2.5 rounded-full bg-slate-900/80 text-white hover:bg-orange-500 hover:text-slate-950 backdrop-blur-md transition-all shadow-lg cursor-pointer"
               title="Quick Breakdown Drawer"
             >
               <Eye className="w-4 h-4" />
@@ -84,7 +84,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               href={project.liveUrl}
               target="_blank"
               rel="noreferrer"
-              className="p-2.5 rounded-full bg-slate-900/80 text-white hover:bg-emerald-500 hover:text-slate-950 backdrop-blur-md transition-all shadow-lg"
+              className="p-2.5 rounded-full bg-slate-900/80 text-white hover:bg-orange-500 hover:text-slate-950 backdrop-blur-md transition-all shadow-lg"
               title="Live Demo Link"
             >
               <ExternalLink className="w-4 h-4" />
@@ -104,11 +104,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <div>
             <h3
               onClick={() => onQuickView(project)}
-              className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors cursor-pointer"
+              className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors cursor-pointer"
             >
               {project.title}
             </h3>
-            <p className="text-xs font-mono text-emerald-400 mt-1 line-clamp-1">
+            <p className="text-xs font-mono text-orange-400 mt-1 line-clamp-1">
               {project.tagline}
             </p>
             <p className="text-sm text-slate-300 mt-2 line-clamp-2 leading-relaxed">
@@ -122,7 +122,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               {parsedMetrics.slice(0, 2).map((m, idx) => (
                 <div key={idx} className="bg-white/[0.03] p-2 rounded-lg text-center">
                   <div className="text-xs font-mono text-slate-400">{m.label}</div>
-                  <div className="text-sm font-bold text-emerald-400">{m.value}</div>
+                  <div className="text-sm font-bold text-orange-400">{m.value}</div>
                 </div>
               ))}
             </div>
@@ -146,7 +146,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <div className="pt-4 border-t border-white/10 flex items-center justify-between">
             <button
               onClick={() => onQuickView(project)}
-              className="text-xs font-semibold text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-1 cursor-pointer"
+              className="text-xs font-semibold text-slate-300 hover:text-orange-400 transition-colors flex items-center gap-1 cursor-pointer"
             >
               Quick Breakdown &rarr;
             </button>
@@ -164,7 +164,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               )}
               <Link
                 href={`/projects/${project.slug}`}
-                className="text-xs font-mono text-emerald-400 hover:underline"
+                className="text-xs font-mono text-orange-400 hover:underline"
               >
                 Case Study
               </Link>
