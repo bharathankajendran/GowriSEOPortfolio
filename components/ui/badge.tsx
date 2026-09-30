@@ -3,27 +3,28 @@ import { cn } from "@/lib/utils";
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: "emerald" | "orange" | "purple" | "cyan" | "slate";
+  variant?: "emerald" | "orange" | "purple" | "cyan" | "slate" | "blue";
   className?: string;
 }
 
 export const Badge: React.FC<BadgeProps> = ({
   children,
-  variant = "emerald",
+  variant = "blue",
   className,
 }) => {
   const variants = {
-    emerald: "bg-orange-500/10 text-orange-400 border-orange-500/30",
-    orange: "bg-orange-500/10 text-orange-400 border-orange-500/30",
-    purple: "bg-purple-500/10 text-purple-300 border-purple-500/30",
-    cyan: "bg-cyan-500/10 text-cyan-300 border-cyan-500/30",
-    slate: "bg-white/5 text-slate-300 border-white/10",
+    blue: "bg-blue-50 text-[#0066FF] border-blue-200/80 font-semibold",
+    emerald: "bg-emerald-50 text-emerald-700 border-emerald-200 font-semibold",
+    orange: "bg-orange-50 text-orange-700 border-orange-200 font-semibold",
+    purple: "bg-purple-50 text-purple-700 border-purple-200 font-semibold",
+    cyan: "bg-sky-50 text-sky-700 border-sky-200 font-semibold",
+    slate: "bg-slate-100 text-slate-700 border-slate-200",
   };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center px-3 py-1 text-xs font-medium rounded-full border backdrop-blur-md transition-all duration-200",
+        "inline-flex items-center px-3 py-1 text-xs font-mono rounded-lg border transition-colors duration-200",
         variants[variant],
         className
       )}

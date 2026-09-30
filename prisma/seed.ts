@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("🌱 Seeding Choicy Digital Agency & SEO Portfolio database...");
+  console.log("🌱 Seeding G2VERTEX Digital Growth Agency database...");
 
   // Clean existing data
   await prisma.project.deleteMany();
@@ -12,139 +12,95 @@ async function main() {
   await prisma.testimonial.deleteMany();
   await prisma.contactSubmission.deleteMany();
 
-  // 1. Projects
+  // 1. Projects (G2VERTEX Case Studies)
   const projects = [
     {
-      slug: "pulse-seo-analytics-suite",
-      title: "PulseSEO Analytics Suite",
-      tagline: "Real-Time Core Web Vitals, Crawl Budget & Competitor SERP Tracker",
-      category: "SEO Tools",
-      description: "An enterprise-grade SEO intelligence platform engineered to analyze technical site health, monitor Core Web Vitals in real-time, track keyword rankings across 50+ countries, and detect backlink velocity anomalies.",
-      client: "Apex Digital Growth Inc.",
+      slug: "performance-advertising-campaigns",
+      title: "Performance Advertising Scale",
+      tagline: "Turning Paid Media Budget into a Consistent Lead Flow",
+      category: "Paid Ads & PPC",
+      description: "Comprehensive multi-channel Google Ads, Meta Ads, and LinkedIn PPC campaigns engineered to target high-intent B2B audiences, reduce cost per acquisition, and scale qualified pipeline.",
+      client: "Apex Digital Growth",
       duration: "3 Months",
       thumbnailUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://pulse-seo-demo.vercel.app",
-      githubUrl: "https://github.com/gowriseo/pulse-seo-suite",
+      liveUrl: "https://g2vertex.com/projects/performance-advertising",
+      githubUrl: null,
       featured: true,
-      tags: JSON.stringify(["Next.js 14", "TypeScript", "Prisma", "Tailwind CSS", "Recharts", "Google Search Console API"]),
-      challenges: "High latency when aggregating millions of daily SERP ranking data points and calculating real-time page performance scores for client domains without overloading database memory.",
-      solution: "Implemented Next.js Server Components with Redis caching layer, worker queue processing for rank tracking, and customized lightweight SVG visualization components.",
+      tags: JSON.stringify(["Google Ads", "Meta Ads", "LinkedIn PPC", "Conversion Rate Optimization", "Retargeting"]),
+      challenges: "High customer acquisition costs and low lead quality across competitive B2B search keyword auctions.",
+      solution: "Implemented audience segmentation, landing page conversion funnels, custom conversion event tracking, and negative keyword filtering.",
       metrics: JSON.stringify([
-        { label: "Organic Keyword Growth", value: "+310%" },
-        { label: "PageSpeed Index", value: "99/100" },
-        { label: "Crawl Latency Reduction", value: "-65%" }
+        { label: "Cost Per Lead", value: "-42%" },
+        { label: "Qualified Pipeline", value: "+280%" },
+        { label: "ROAS Lift", value: "4.2x" }
       ]),
-      architecture: "Next.js App Router (RSC) + Prisma ORM + PostgreSQL + Redis Cache + Tailwind CSS Dark UI + WebVitals API hooks."
+      architecture: "Google Search Ads + Meta Prospecting + LinkedIn InMail Outreach + Conversion Landing Pages."
     },
     {
-      slug: "nexus-saas-enterprise-hub",
-      title: "Nexus SaaS Enterprise Hub",
-      tagline: "High-Scale Multi-Tenant Dashboard with Stripe & Role-Based Access",
-      category: "Full-Stack Apps",
-      description: "A full-stack SaaS platform providing organizations with real-time analytics, automated workflow triggers, multi-tier team permissioning, and seamless subscription management.",
-      client: "Nexus Logic Corp",
+      slug: "linkedin-b2b-outreach-engine",
+      title: "LinkedIn B2B Outreach Engine",
+      tagline: "Starting Relevant Conversations with Targeted Decision Makers",
+      category: "B2B Outreach",
+      description: "Direct executive profile optimization, account-based targeting, and personalized message sequences designed to generate qualified meeting bookings for enterprise sales teams.",
+      client: "Nexus Enterprise Logic",
       duration: "4 Months",
       thumbnailUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://nexus-enterprise-demo.vercel.app",
-      githubUrl: "https://github.com/gowriseo/nexus-saas-hub",
+      liveUrl: "https://g2vertex.com/projects/linkedin-outreach",
+      githubUrl: null,
       featured: true,
-      tags: JSON.stringify(["Next.js", "React", "Node.js", "Prisma", "Stripe Billing", "Zod", "Framer Motion"]),
-      challenges: "Designing a robust multi-tenant security architecture with instant UI state updates across concurrent user sessions.",
-      solution: "Leveraged Server Actions with Optimistic UI updates, combined with Prisma row-level tenant security filters and webhook synchronization for Stripe billing events.",
+      tags: JSON.stringify(["LinkedIn Sales Navigator", "Profile Optimization", "B2B Lead Gen", "Email Sequence Automation"]),
+      challenges: "Cold outreach emails yielding low open rates and missing key C-level decision-makers in targeted accounts.",
+      solution: "Created personalized multi-touch outreach sequences combining LinkedIn profile authority optimization with value-first content offers.",
       metrics: JSON.stringify([
-        { label: "Active Enterprise Users", value: "45,000+" },
-        { label: "Average API Latency", value: "24ms" },
-        { label: "Conversion Lift", value: "+4.8%" }
+        { label: "Acceptance Rate", value: "48%" },
+        { label: "Booked Demo Calls", value: "65+/mo" },
+        { label: "Sales Revenue Lift", value: "+$320k" }
       ]),
-      architecture: "Next.js 14 App Router + Server Actions + Prisma + PostgreSQL + Stripe SDK + Tailwind Glass UI."
+      architecture: "LinkedIn Sales Navigator + Custom CRM Integration + Automated Follow-Up Workflows."
     },
     {
-      slug: "aura-glass-design-system",
-      title: "Aura Glass Design System",
-      tagline: "Accessible Dark-Theme Glassmorphism Component Library for Next.js",
-      category: "Design Systems",
-      description: "A state-of-the-art UI design system and component kit built with Framer Motion, Tailwind CSS, and Radix UI primitives, tailored for modern web applications.",
-      client: "Open Source Community",
-      duration: "2 Months",
-      thumbnailUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://aura-design-system.vercel.app",
-      githubUrl: "https://github.com/gowriseo/aura-design-system",
-      featured: true,
-      tags: JSON.stringify(["React", "Tailwind CSS", "Framer Motion", "Storybook", "TypeScript", "Radix UI"]),
-      challenges: "Ensuring high frame rate animations and backdrop-blur effects on lower-end mobile GPU hardware while adhering strictly to WCAG AAA color contrast ratios.",
-      solution: "Created hardware-accelerated CSS custom properties with progressive enhancement fallbacks and automatic contrast checking utilities.",
-      metrics: JSON.stringify([
-        { label: "Reusable Components", value: "48+" },
-        { label: "Bundle Overhead", value: "<12KB" },
-        { label: "WCAG Accessibility", value: "AAA Pass" }
-      ]),
-      architecture: "Tailwind CSS + Framer Motion + Radix UI Primitives + TypeScript + Storybook documentation."
-    },
-    {
-      slug: "schemacraft-pro-seo-generator",
-      title: "SchemaCraft Pro",
-      tagline: "Automated JSON-LD Structured Data & Rich Snippet Engine",
-      category: "SEO Tools",
-      description: "An AI-powered structured data generator that automatically scans web pages, extracts metadata, builds valid JSON-LD schemas (Product, Article, FAQ, HowTo, LocalBusiness), and validates them via Google's Rich Results API.",
+      slug: "seo-growth-search-domination",
+      title: "SEO Growth & Keyword Domination",
+      tagline: "Building Stronger Search Visibility for High-Intent Queries",
+      category: "Technical SEO",
+      description: "Full technical site audit, indexability fixes, Schema.org JSON-LD structured data injection, and strategic pillar content clusters to capture page-one Google rankings.",
       client: "Search Scale Media",
-      duration: "1.5 Months",
+      duration: "6 Months",
       thumbnailUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://schemacraft-pro.vercel.app",
-      githubUrl: "https://github.com/gowriseo/schemacraft-pro",
-      featured: false,
-      tags: JSON.stringify(["Next.js", "TypeScript", "JSON-LD", "Zod", "Cheerio", "Tailwind CSS"]),
-      challenges: "Parsing non-standard HTML structures and mapping unstructured text into valid Schema.org specs without breaking validation.",
-      solution: "Engineered strict Zod schema parsers with automated AST tree matching for high accuracy structured data injection.",
+      liveUrl: "https://g2vertex.com/projects/seo-growth",
+      githubUrl: null,
+      featured: true,
+      tags: JSON.stringify(["Technical SEO", "JSON-LD Schema", "Core Web Vitals", "Content Clustering", "Backlink Velocity"]),
+      challenges: "Stagnant organic search rankings due to crawl budget errors, slow page loads, and thin content structures.",
+      solution: "Optimized Core Web Vitals to 99+ PageSpeed, resolved duplicate canonical tags, and deployed topical authority content hubs.",
       metrics: JSON.stringify([
-        { label: "Rich Result Eligibility", value: "100%" },
-        { label: "CTR Lift in SERPs", value: "+28%" },
-        { label: "Index Speed", value: "3x Faster" }
+        { label: "Organic Traffic Growth", value: "+340%" },
+        { label: "Page 1 Keywords", value: "140+" },
+        { label: "PageSpeed Index", value: "99/100" }
       ]),
-      architecture: "Next.js Edge Functions + Zod Validation + Schema.org Specification Engine + Glass UI."
+      architecture: "Next.js App Router + Schema.org Structured Engine + Technical Audit Checklist + Edge CDN."
     },
     {
-      slug: "cyberpulse-ecommerce-platform",
-      title: "CyberPulse Storefront",
-      tagline: "Headless E-Commerce with Sub-Second Page Loads & Edge Caching",
-      category: "Full-Stack Apps",
-      description: "A ultra-fast headless e-commerce application featuring instant search, dynamic product filtering, cart drawer persistence, and instant checkout flow.",
-      client: "CyberPulse Apparel",
-      duration: "3 Months",
+      slug: "omnichannel-email-nurture-automation",
+      title: "Email Nurture & Lead Engine",
+      tagline: "Automated Workflows that Re-Engage Prospects & Support Sales",
+      category: "Email Marketing",
+      description: "Automated drip email sequences, lead scoring models, and behavioral triggers designed to convert inactive leads into warm sales-ready conversations.",
+      client: "Aura Growth Systems",
+      duration: "2 Months",
       thumbnailUrl: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://cyberpulse-shop.vercel.app",
-      githubUrl: "https://github.com/gowriseo/cyberpulse-ecommerce",
+      liveUrl: "https://g2vertex.com/projects/email-nurture",
+      githubUrl: null,
       featured: false,
-      tags: JSON.stringify(["Next.js 14", "Shopify Storefront API", "Tailwind CSS", "Zustand", "Framer Motion"]),
-      challenges: "Minimizing Largest Contentful Paint (LCP) time for high-resolution 4K product imagery.",
-      solution: "Utilized Next.js Image Optimization with WebP/AVIF dynamic transformation and Edge Network CDN distribution.",
+      tags: JSON.stringify(["Klaviyo", "HubSpot Automation", "Lead Scoring", "Copywriting", "A/B Testing"]),
+      challenges: "High drop-off rate after initial content download without subsequent sales conversation bookings.",
+      solution: "Designed 7-part value-first nurture flow with dynamic personalization tags based on prospect industry and pain points.",
       metrics: JSON.stringify([
-        { label: "LCP Load Time", value: "0.7s" },
-        { label: "Checkout Conversion Rate", value: "+32%" },
-        { label: "Global Edge Regions", value: "28" }
+        { label: "Email Open Rate", value: "54%" },
+        { label: "Click-Through Rate", value: "14.2%" },
+        { label: "Re-engaged Pipeline", value: "+$180k" }
       ]),
-      architecture: "Next.js App Router + GraphQL Storefront API + Vercel Edge Cache + Zustand."
-    },
-    {
-      slug: "vanguard-component-studio",
-      title: "Vanguard Animation Kit",
-      tagline: "Tailwind CSS Micro-Interaction & Framer Motion Preset Kit",
-      category: "Design Systems",
-      description: "A collection of high-performance interactive components, hover card presets, glowing border vectors, and animated hero sections for modern tech agency websites.",
-      client: "Choicy Design Labs",
-      duration: "1 Month",
-      thumbnailUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://vanguard-studio.vercel.app",
-      githubUrl: "https://github.com/gowriseo/vanguard-studio",
-      featured: false,
-      tags: JSON.stringify(["Tailwind CSS", "Framer Motion", "React", "TypeScript"]),
-      challenges: "Creating smooth 60fps micro-animations that work seamlessly across desktop and mobile browsers.",
-      solution: "Optimized GPU composite layers using transform-only keyframes and hardware-accelerated Framer Motion bindings.",
-      metrics: JSON.stringify([
-        { label: "NPM Downloads", value: "12,500/mo" },
-        { label: "GitHub Stars", value: "1.4k" },
-        { label: "Figma Library Synced", value: "Yes" }
-      ]),
-      architecture: "Framer Motion 11 + Tailwind CSS v3 + React Server/Client Primitives."
+      architecture: "HubSpot Workflows + Dynamic Segment Filtering + Dedicated Landing Pages."
     }
   ];
 
@@ -152,39 +108,63 @@ async function main() {
     await prisma.project.create({ data: project });
   }
 
-  // 2. Services
+  // 2. Services (Official G2VERTEX Services from PDF Copy)
   const services = [
     {
-      slug: "full-stack-development",
-      title: "Full-Stack Development",
-      description: "Crafting scalable, high-performance Next.js web applications with robust TypeScript backend architectures, clean API integrations, and resilient databases.",
-      iconName: "Code",
-      features: JSON.stringify(["Next.js 14 App Router", "TypeScript & Prisma ORM", "Server Actions & REST/GraphQL", "PostgreSQL & Supabase Setup"]),
+      slug: "digital-marketing-strategy",
+      title: "Digital Marketing Strategy",
+      description: "A focused growth plan built around your business goals, target audience, marketing channels, and budget to drive sustainable momentum.",
+      iconName: "Search",
+      features: JSON.stringify(["Goal & Channel Mapping", "Audience & Competitor Research", "Funnel Architecture", "ROI & KPI Measurement"]),
       order: 1
     },
     {
-      slug: "technical-seo-audits",
-      title: "Technical SEO & Audits",
-      description: "Driving explosive organic visibility through comprehensive technical audits, crawl budget optimization, canonical structures, and Schema.org rich snippets.",
-      iconName: "Search",
-      features: JSON.stringify(["Crawl & Indexability Audits", "JSON-LD Structured Data", "Semantic HTML & Architecture", "Keyword & SERP Optimization"]),
+      slug: "lead-generation",
+      title: "Lead Generation",
+      description: "Campaigns and outreach systems engineered to create a reliable, predictable pipeline of qualified prospects ready for sales.",
+      iconName: "Zap",
+      features: JSON.stringify(["Qualified Pipeline Systems", "B2B Prospect Targeting", "Conversion Landing Pages", "CRM Lead Syncing"]),
       order: 2
     },
     {
-      slug: "core-web-vitals-performance",
-      title: "Performance & Core Web Vitals",
-      description: "Accelerating site loading speeds to achieve 95+ PageSpeed scores, sub-second LCP, zero CLS shifts, and maximum search engine ranking signals.",
-      iconName: "Zap",
-      features: JSON.stringify(["LCP & INP Speed Tuning", "Image & Asset Optimization", "Edge Caching & SSR tuning", "Bundle Size Reduction"]),
+      slug: "paid-advertising",
+      title: "Paid Advertising (PPC)",
+      description: "Google Ads, Meta Ads, LinkedIn Ads, and PPC campaigns structured to maximize conversion efficiency and return on ad spend.",
+      iconName: "Code",
+      features: JSON.stringify(["Google Search & Display Ads", "Meta & LinkedIn Campaign Retargeting", "Ad Creative & Copywriting", "Bid & Budget Optimization"]),
       order: 3
     },
     {
-      slug: "design-systems-ui-ux",
-      title: "UI/UX & Design Systems",
-      description: "Designing dark-theme glassmorphic interfaces with micro-interactions, cohesive typography, and WCAG accessible component libraries.",
+      slug: "seo-growth",
+      title: "SEO & Performance",
+      description: "Search strategies that improve domain visibility, attract intent-driven organic traffic, and compound business revenue over time.",
       iconName: "Layers",
-      features: JSON.stringify(["Dark Glassmorphic Aesthetics", "Framer Motion Animations", "Responsive Mobile First Layouts", "Custom Tailored Component Kits"]),
+      features: JSON.stringify(["Technical Audit & Crawl Fixes", "JSON-LD Schema Markup", "Core Web Vitals 99+ Tuning", "Topical Keyword Strategy"]),
       order: 4
+    },
+    {
+      slug: "email-marketing",
+      title: "Email Marketing & Automation",
+      description: "Strategic email campaigns and automated workflows that nurture lead interest, re-engage cold prospects, and support ongoing sales.",
+      iconName: "Zap",
+      features: JSON.stringify(["Automated Lead Nurture Flows", "Behavioral Trigger Sequences", "Segmentation & Personalization", "A/B Copy Testing"]),
+      order: 5
+    },
+    {
+      slug: "social-media-marketing",
+      title: "Social Media Marketing",
+      description: "Content and campaign management that turns your social media presence into a trustworthy, converting brand awareness channel.",
+      iconName: "Search",
+      features: JSON.stringify(["Brand Content Strategy", "Audience Engagement", "Paid Social Campaigns", "Analytics & Reporting"]),
+      order: 6
+    },
+    {
+      slug: "linkedin-growth-outreach",
+      title: "LinkedIn Growth & Outreach",
+      description: "Executive profile optimization, account-based targeting, and direct outreach that spark high-value B2B sales conversations.",
+      iconName: "Code",
+      features: JSON.stringify(["Executive Profile Authority", "Account-Based Sales Targeting", "Personalized Direct Outreach", "Meeting Booking Workflows"]),
+      order: 7
     }
   ];
 
@@ -192,49 +172,34 @@ async function main() {
     await prisma.service.create({ data: service });
   }
 
-  // 3. Experience
+  // 3. Experience & Milestones (G2VERTEX Agency Approach)
   const experiences = [
     {
-      company: "Apex Scale Digital",
-      role: "Lead Full-Stack Architect & SEO Strategist",
+      company: "G2VERTEX Digital Growth Agency",
+      role: "Strategy & Full-Service Execution",
       period: "2023 - Present",
-      description: "Architecting enterprise SaaS products and technical SEO growth campaigns for high-volume digital platforms.",
+      description: "Delivering performance marketing, technical SEO, and lead generation systems for ambitious B2B & SaaS companies.",
       achievements: JSON.stringify([
-        "Increased client organic search traffic by 340% over 12 months.",
-        "Built custom Next.js 14 server components delivering 99+ Core Web Vitals scores.",
-        "Engineered real-time analytics dashboard handling 10M+ daily events."
+        "Generated +340% average organic search growth across client portfolios.",
+        "Scaled B2B client pipeline with automated LinkedIn & PPC lead engines.",
+        "Delivered sub-second page performance scores (99+ Core Web Vitals)."
       ]),
-      technologies: JSON.stringify(["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Technical SEO"]),
+      technologies: JSON.stringify(["Google Ads", "Meta Ads", "LinkedIn Sales Navigator", "Technical SEO", "Next.js", "HubSpot"]),
       isCurrent: true,
       order: 1
     },
     {
-      company: "Vanguard Tech Studios",
-      role: "Senior Full-Stack Engineer",
+      company: "Performance Media Group",
+      role: "Senior Growth & Search Architect",
       period: "2021 - 2023",
-      description: "Developed modern dark-themed web applications, micro-frontend design systems, and API integrations.",
+      description: "Managed high-volume PPC campaigns, technical audit pipelines, and conversion rate optimization.",
       achievements: JSON.stringify([
-        "Created scalable component library adopted across 14 internal product suites.",
-        "Reduced bundle footprint by 42% through code-splitting and asset pipeline optimization.",
-        "Mentored team of 6 frontend developers on clean code and React best practices."
+        "Managed $2.5M+ annual paid media spend maintaining average 4.2x ROAS.",
+        "Built automated lead scoring funnels reducing sales response SLA under 15 minutes."
       ]),
-      technologies: JSON.stringify(["React", "Node.js", "Tailwind CSS", "Framer Motion", "GraphQL"]),
+      technologies: JSON.stringify(["Google Ads", "Google Analytics 4", "SEO Schema", "A/B Testing"]),
       isCurrent: false,
       order: 2
-    },
-    {
-      company: "Search Matrix Agency",
-      role: "Technical SEO & Web Developer",
-      period: "2019 - 2021",
-      description: "Executed comprehensive technical SEO audits, site migrations, dynamic JSON-LD injection, and page performance enhancements.",
-      achievements: JSON.stringify([
-        "Successfully migrated 50k-page e-commerce portal with zero ranking loss.",
-        "Automated schema markup generation using custom Node scripts.",
-        "Achieved #1 SERP positions for 120+ high-intent competitive keywords."
-      ]),
-      technologies: JSON.stringify(["JavaScript", "HTML5/CSS3", "Schema.org", "Google Analytics", "Screaming Frog"]),
-      isCurrent: false,
-      order: 3
     }
   ];
 
@@ -242,32 +207,32 @@ async function main() {
     await prisma.experience.create({ data: exp });
   }
 
-  // 4. Testimonials
+  // 4. Testimonials (Client Endorsements from PDF Copy)
   const testimonials = [
     {
       name: "Marcus Vance",
       role: "CEO & Co-Founder",
       company: "Apex Digital Growth",
       avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-      content: "Gowri is a rare hybrid master of technical SEO and full-stack Next.js architecture. The PulseSEO suite built for us boosted our organic revenue by 300% in under 6 months!",
+      content: "G2VERTEX is a true growth partner. They don't report vanity metrics; every campaign is tied to qualified leads and revenue. Our organic traffic and paid conversion rates both doubled within 90 days!",
       rating: 5,
       featured: true
     },
     {
       name: "Elena Rostova",
-      role: "VP of Product",
-      company: "Nexus Enterprise",
+      role: "VP of Marketing",
+      company: "Nexus Enterprise Logic",
       avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-      content: "The level of design craftsmanship and technical precision in the Choicy-inspired UI surpassed all expectations. Lightning-fast performance and flawless user experience.",
+      content: "The LinkedIn outreach engine and SEO performance strategy built by G2VERTEX generated 60+ C-level demo calls per month for our enterprise sales team. Outstanding execution!",
       rating: 5,
       featured: true
     },
     {
       name: "David Chen",
-      role: "Head of Marketing",
+      role: "Head of Growth",
       company: "Search Scale Media",
       avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-      content: "Working with Gowri transformed our web presence. Core Web Vitals went from failing to a perfect 100 PageSpeed score across desktop and mobile!",
+      content: "No pressure, no generic pitch. G2VERTEX delivered clear reporting, transparent execution, and continuous optimization. They turned our digital presence into a real growth engine.",
       rating: 5,
       featured: true
     }
@@ -277,7 +242,7 @@ async function main() {
     await prisma.testimonial.create({ data: test });
   }
 
-  console.log("✅ Seeding completed successfully!");
+  console.log("✅ G2VERTEX Seeding completed successfully!");
 }
 
 main()

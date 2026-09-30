@@ -2,138 +2,104 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Code2, Search, Zap, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { ArrowUpRight, Code2, Search, Zap, CheckCircle2, ShieldCheck, TrendingUp, Target, BarChart3, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Flower3DBackground } from "@/components/ui/flower-3d";
 import { TypewriterHeadline } from "@/components/ui/typewriter-headline";
+import { HeroDashboardPreview } from "@/components/ui/hero-dashboard-preview";
 
 export const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-screen pt-40 pb-20 flex items-center justify-center overflow-hidden bg-grid-pattern">
-      {/* 3D Particle Flower Model Background */}
-      <div className="absolute inset-0 z-0 opacity-90">
-        <Flower3DBackground />
-      </div>
+    <section id="hero" className="relative min-h-[90vh] pt-32 pb-16 flex items-center justify-center bg-grid-pattern bg-[#F8FAFC]">
+      {/* Subtle Corporate Glow Backdrop */}
+      <div className="absolute inset-0 bg-corporate-glow pointer-events-none" />
 
-      {/* Glow Mesh backgrounds */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-choicy-glow blur-3xl pointer-events-none z-0 opacity-50" />
-      <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-0" />
-      <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-0" style={{ animationDelay: "2s" }} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          
+          {/* Left Column: Executive Copy & Action CTAs */}
+          <div className="lg:col-span-7 text-left space-y-6">
+            {/* Brand Promise Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="inline-flex items-center gap-2"
+            >
+              <Badge variant="blue" className="px-3.5 py-1.5 text-xs sm:text-sm gap-2 font-mono bg-blue-50 text-[#0066FF] border border-blue-200 font-bold">
+                <Sparkles className="w-3.5 h-3.5 text-[#0066FF]" />
+                BRAND PROMISE: Build visibility • Generate demand • Create measurable growth.
+              </Badge>
+            </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        {/* Availability Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 mb-6"
-        >
-          <Badge variant="emerald" className="px-4 py-1.5 text-sm gap-2">
-            <span className="w-2 h-2 rounded-full bg-orange-400 animate-ping" />
-            Available for Select Client Projects & Full-Stack Contracts
-          </Badge>
-        </motion.div>
+            {/* Main Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <TypewriterHeadline />
+            </motion.div>
 
-        {/* Main Hero Headline with Dynamic Typewriter & UI Letter Jumps */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <TypewriterHeadline />
-        </motion.div>
+            {/* Subheading Body Copy from PDF */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-base sm:text-lg text-slate-700 max-w-2xl leading-relaxed font-normal"
+            >
+              <span className="font-bold text-slate-900">G2VERTEX</span> helps ambitious businesses grow through performance marketing, lead generation, paid advertising, SEO, and high-impact outreach. We build practical growth systems designed to bring the right people to your business—and move them to act.
+            </motion.p>
 
-        {/* Tagline / Subheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
-        >
-          Combining senior full-stack engineering with deep technical SEO auditing. We craft sub-second digital experiences that captivate users and conquer search rankings.
-        </motion.p>
+            {/* Trust / Value Strip from PDF */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="pt-1 flex flex-wrap items-center gap-2 text-xs font-mono text-slate-700"
+            >
+              <span className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center gap-1.5 font-semibold">
+                <Target className="w-3.5 h-3.5 text-[#0066FF]" /> Strategy-led campaigns
+              </span>
+              <span className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center gap-1.5 font-semibold">
+                <BarChart3 className="w-3.5 h-3.5 text-emerald-600" /> Clear reporting
+              </span>
+              <span className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center gap-1.5 font-semibold">
+                <TrendingUp className="w-3.5 h-3.5 text-cyan-600" /> Qualified lead focus
+              </span>
+            </motion.div>
 
-        {/* Tech Pill Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-400"
-        >
-          <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-            <Code2 className="w-4 h-4 text-orange-400" /> Next.js 14 App Router
-          </span>
-          <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-            <Search className="w-4 h-4 text-cyan-400" /> Technical SEO & Schema
-          </span>
-          <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-purple-400" /> Core Web Vitals 99+
-          </span>
-        </motion.div>
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+            >
+              <a href="#contact">
+                <Button variant="primary" size="lg" className="w-full sm:w-auto font-bold text-base px-8">
+                  Book a Growth Call <ArrowUpRight className="w-5 h-5 ml-1" />
+                </Button>
+              </a>
+              <a href="#projects">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto font-semibold">
+                  View Our Work
+                </Button>
+              </a>
+            </motion.div>
+          </div>
 
-        {/* Action CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a href="#projects">
-            <Button variant="primary" size="lg" className="w-full sm:w-auto">
-              Explore Works <ArrowUpRight className="w-5 h-5" />
-            </Button>
-          </a>
-          <a href="#contact">
-            <Button variant="outline" size="lg" className="w-full sm:w-auto">
-              Contact Me
-            </Button>
-          </a>
-        </motion.div>
-
-        {/* Floating Social Media Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-14 flex items-center justify-center gap-4 text-slate-400"
-        >
-          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 mr-2">Connect:</span>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noreferrer"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
-            aria-label="GitHub"
+          {/* Right Column: Hero Dashboard Preview */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-5 w-full"
           >
-            <Github className="w-5 h-5" />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
-            aria-label="LinkedIn"
-          >
-            <Linkedin className="w-5 h-5" />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
-            aria-label="Twitter"
-          >
-            <Twitter className="w-5 h-5" />
-          </a>
-          <a
-            href="mailto:contact@gowriseo.com"
-            className="p-3 rounded-full bg-white/[0.03] border border-white/10 hover:border-orange-500/50 hover:bg-white/10 hover:text-orange-400 transition-all hover:scale-110"
-            aria-label="Email"
-          >
-            <Mail className="w-5 h-5" />
-          </a>
-        </motion.div>
+            <HeroDashboardPreview />
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

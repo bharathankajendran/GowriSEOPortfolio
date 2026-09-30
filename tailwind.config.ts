@@ -10,19 +10,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0A0A0C",
-        card: "#121318",
-        border: "rgba(255, 255, 255, 0.08)",
+        background: "#FFFFFF",
+        card: "#FFFFFF",
+        border: "#E2E8F0",
+        navy: {
+          900: "#0B192C",
+          950: "#070F1B",
+        },
+        virtusa: {
+          blue: "#0066FF",
+          darkBlue: "#0044B3",
+          lightBg: "#F8FAFC",
+          cardBg: "#FFFFFF",
+          accentOrange: "#FF5500",
+        },
         muted: {
-          DEFAULT: "#8E95A5",
-          foreground: "#64748B"
+          DEFAULT: "#64748B",
+          foreground: "#475569"
         },
         accent: {
-          orange: "#F97316",
-          emerald: "#F97316",
-          purple: "#8B5CF6",
-          cyan: "#06B6D4",
-          amber: "#FF7700"
+          blue: "#0066FF",
+          orange: "#FF5500",
+          emerald: "#10B981",
+          cyan: "#0284C7",
         }
       },
       fontFamily: {
@@ -31,29 +41,8 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "choicy-glow": "radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.2) 0%, rgba(139, 92, 246, 0.1) 35%, rgba(10, 10, 12, 0) 70%)",
-        "glass-gradient": "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)",
+        "corporate-glow": "radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.08) 0%, rgba(248, 250, 252, 0) 70%)",
       },
-      animation: {
-        "float": "float 6s ease-in-out infinite",
-        "pulse-glow": "pulseGlow 4s ease-in-out infinite",
-        "shimmer": "shimmer 2.5s infinite linear",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-12px)" },
-        },
-        pulseGlow: {
-          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
-          "50%": { opacity: "0.8", transform: "scale(1.05)" },
-        },
-        shimmer: {
-          "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(100%)" },
-        }
-      }
     },
   },
   plugins: [],

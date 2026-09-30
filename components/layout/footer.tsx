@@ -6,98 +6,93 @@ import { G2VertexLogo } from "@/components/ui/g2-vertex-logo";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-[#070709] border-t border-white/10 pt-20 pb-12 overflow-hidden">
-      {/* Glow Mesh background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-emerald-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
-
+    <footer className="relative bg-[#0B192C] text-slate-300 border-t border-slate-800 pt-20 pb-12 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Top CTA Banner */}
-        <div className="rounded-3xl bg-gradient-to-r from-emerald-950/40 via-[#121318] to-purple-950/40 border border-white/10 p-8 md:p-12 mb-16 flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-xl">
+        {/* Top CTA Banner from PDF */}
+        <div className="rounded-3xl bg-slate-900 border border-slate-800 p-8 md:p-12 mb-16 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
           <div className="space-y-3 text-center md:text-left">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <Sparkles className="w-3.5 h-3.5" /> Ready to scale your visibility & app latency?
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" /> FINAL CTA
             </span>
-            <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">
-              Have a Project in Mind? <br className="hidden md:inline" /> Let&apos;s Build Something Extraordinary.
+            <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
+              Ready to create your next growth opportunity?
             </h2>
+            <p className="text-slate-400 text-sm sm:text-base font-normal">
+              Let&apos;s build a smarter marketing engine for your business.
+            </p>
           </div>
           <a href="#contact">
-            <Button variant="primary" size="lg" className="whitespace-nowrap">
-              Start a Conversation <ArrowUpRight className="w-5 h-5" />
+            <Button variant="primary" size="lg" className="whitespace-nowrap font-bold text-base px-8">
+              Start a Conversation <ArrowUpRight className="w-5 h-5 ml-1" />
             </Button>
           </a>
         </div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
           <div className="space-y-4 md:col-span-2">
             <Link href="/" className="flex items-center gap-2">
-              <G2VertexLogo variant="full" size="lg" />
+              <G2VertexLogo variant="full" size="lg" isDarkBackground={true} />
             </Link>
-            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              Senior Full-Stack Next.js Architect & Technical SEO Strategist. Specializing in high-performance web applications, sub-second latency, and explosive search visibility.
+            <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-normal">
+              G2VERTEX helps ambitious businesses create visibility, generate qualified leads, and grow with confidence through performance marketing, SEO, PPC, and outreach.
             </p>
             <div className="flex items-center gap-3 pt-2">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:bg-white/10 transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:bg-white/10 transition-colors"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-[#0066FF] hover:border-[#0066FF] transition-colors"
+                aria-label="LinkedIn"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:bg-white/10 transition-colors"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-[#0066FF] hover:border-[#0066FF] transition-colors"
+                aria-label="Twitter"
               >
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-4 h-4" />
               </a>
               <a
-                href="mailto:contact@gowriseo.com"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:bg-white/10 transition-colors"
+                href="mailto:contact@g2vertex.com"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-[#0066FF] hover:border-[#0066FF] transition-colors"
+                aria-label="Email"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider font-mono">Navigation</h4>
-            <ul className="space-y-2 text-sm text-slate-400">
-              <li><a href="#projects" className="hover:text-emerald-400 transition-colors">Featured Works</a></li>
-              <li><a href="#services" className="hover:text-emerald-400 transition-colors">Core Expertise</a></li>
-              <li><a href="#experience" className="hover:text-emerald-400 transition-colors">Milestones</a></li>
-              <li><a href="#testimonials" className="hover:text-emerald-400 transition-colors">Client Reviews</a></li>
-              <li><a href="#contact" className="hover:text-emerald-400 transition-colors">Get in Touch</a></li>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Navigation</h4>
+            <ul className="space-y-2 text-xs text-slate-400 font-medium">
+              <li><a href="#hero" className="hover:text-[#0066FF] transition-colors">Home</a></li>
+              <li><a href="#services" className="hover:text-[#0066FF] transition-colors">What We Do</a></li>
+              <li><a href="#experience" className="hover:text-[#0066FF] transition-colors">Why G2VERTEX</a></li>
+              <li><a href="#projects" className="hover:text-[#0066FF] transition-colors">Projects</a></li>
+              <li><a href="#contact" className="hover:text-[#0066FF] transition-colors">Contact</a></li>
             </ul>
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider font-mono">Specialization</h4>
-            <ul className="space-y-2 text-sm text-slate-400">
-              <li>Full-Stack Next.js 14</li>
-              <li>Technical SEO Audits</li>
-              <li>PageSpeed & Core Web Vitals</li>
-              <li>Prisma & PostgreSQL Architectures</li>
-              <li>Dark Glassmorphism Design Systems</li>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Growth Services</h4>
+            <ul className="space-y-2 text-xs text-slate-400 font-medium">
+              <li>Digital Marketing Strategy</li>
+              <li>Lead Generation Systems</li>
+              <li>Paid Advertising (PPC)</li>
+              <li>SEO &amp; Performance</li>
+              <li>LinkedIn Growth &amp; Outreach</li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} GowriSEOPortfolio. Inspired by Choicy Digital Agency.</p>
-          <p className="font-mono text-slate-400">Built with Next.js 14, Tailwind CSS, Prisma & Framer Motion</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <p>© {new Date().getFullYear()} G2VERTEX Modern Digital Growth Agency. All rights reserved.</p>
+          <p className="font-mono text-slate-400">Build visibility. Generate demand. Create measurable growth.</p>
         </div>
       </div>
     </footer>

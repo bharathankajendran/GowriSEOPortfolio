@@ -45,14 +45,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.3 }}
+      exit={{ opacity: 0, scale: 0.97 }}
+      transition={{ duration: 0.25 }}
     >
-      <GlassCard className="flex flex-col h-full group p-0 overflow-hidden">
-        {/* Card Header Thumbnail */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
+      <GlassCard className="flex flex-col h-full group p-0 overflow-hidden border-slate-200 bg-white hover:border-blue-300 hover:shadow-xl">
+        {/* Thumbnail Image Header */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 border-b border-slate-200">
           <Image
             src={project.thumbnailUrl}
             alt={project.title}
@@ -60,23 +60,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121318] via-[#121318]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60" />
 
           {/* Featured Badge */}
           {project.featured && (
-            <div className="absolute top-4 left-4 z-10">
-              <Badge variant="emerald" className="gap-1 shadow-lg backdrop-blur-xl">
-                <Sparkles className="w-3 h-3" /> Featured Work
+            <div className="absolute top-3.5 left-3.5 z-10">
+              <Badge variant="blue" className="gap-1 shadow-md bg-white/95 text-[#0066FF] border-blue-200 font-bold">
+                <Sparkles className="w-3 h-3 text-[#0066FF]" /> Featured Work
               </Badge>
             </div>
           )}
 
+          {/* Category Tag */}
+          <div className="absolute bottom-3.5 left-3.5 z-10">
+            <span className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/95 text-slate-800 border border-slate-200 font-semibold shadow-sm">
+              {project.category}
+            </span>
+          </div>
+
           {/* Quick Action Overlay Buttons */}
-          <div className="absolute top-4 right-4 z-10 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute top-3.5 right-3.5 z-10 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <button
               onClick={() => onQuickView(project)}
-              className="p-2.5 rounded-full bg-slate-900/80 text-white hover:bg-orange-500 hover:text-slate-950 backdrop-blur-md transition-all shadow-lg cursor-pointer"
-              title="Quick Breakdown Drawer"
+              className="p-2 rounded-lg bg-white/95 text-slate-700 hover:text-white hover:bg-[#0066FF] transition-all cursor-pointer shadow-md"
+              title="Quick Breakdown"
             >
               <Eye className="w-4 h-4" />
             </button>
@@ -84,79 +91,72 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               href={project.liveUrl}
               target="_blank"
               rel="noreferrer"
-              className="p-2.5 rounded-full bg-slate-900/80 text-white hover:bg-orange-500 hover:text-slate-950 backdrop-blur-md transition-all shadow-lg"
-              title="Live Demo Link"
+              className="p-2 rounded-lg bg-white/95 text-slate-700 hover:text-white hover:bg-[#0066FF] transition-all shadow-md"
+              title="Live Site"
             >
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>
-
-          {/* Category Chip */}
-          <div className="absolute bottom-4 left-4 z-10">
-            <span className="px-3 py-1 rounded-full text-xs font-mono bg-black/60 text-slate-300 border border-white/10 backdrop-blur-md">
-              {project.category}
-            </span>
-          </div>
         </div>
 
-        {/* Card Body */}
-        <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
+        {/* Card Body Details */}
+        <div className="p-5 flex flex-col flex-grow justify-between space-y-4">
           <div>
             <h3
               onClick={() => onQuickView(project)}
-              className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors cursor-pointer"
+              className="text-lg font-extrabold text-slate-900 group-hover:text-[#0066FF] transition-colors cursor-pointer"
             >
               {project.title}
             </h3>
-            <p className="text-xs font-mono text-orange-400 mt-1 line-clamp-1">
+            <p className="text-xs font-mono text-[#0066FF] font-semibold mt-1 line-clamp-1">
               {project.tagline}
             </p>
-            <p className="text-sm text-slate-300 mt-2 line-clamp-2 leading-relaxed">
+            <p className="text-xs text-slate-600 mt-2.5 line-clamp-2 leading-relaxed font-normal">
               {project.description}
             </p>
           </div>
 
-          {/* Highlight Stat Pills */}
+          {/* Key Metric Tags */}
           {parsedMetrics.length > 0 && (
-            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/5">
+            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
               {parsedMetrics.slice(0, 2).map((m, idx) => (
-                <div key={idx} className="bg-white/[0.03] p-2 rounded-lg text-center">
-                  <div className="text-xs font-mono text-slate-400">{m.label}</div>
-                  <div className="text-sm font-bold text-orange-400">{m.value}</div>
+                <div key={idx} className="bg-slate-50 p-2 rounded-lg text-center border border-slate-200/60">
+                  <div className="text-[10px] font-mono text-slate-500 font-semibold">{m.label}</div>
+                  <div className="text-xs font-black text-[#0066FF] mt-0.5">{m.value}</div>
                 </div>
               ))}
             </div>
           )}
 
           {/* Tech Badges */}
-          <div className="flex flex-wrap gap-1.5 pt-2">
+          <div className="flex flex-wrap gap-1 pt-1">
             {parsedTags.slice(0, 4).map((tag) => (
-              <Badge key={tag} variant="slate" className="text-[11px] py-0.5">
+              <Badge key={tag} variant="slate" className="text-[10px] py-0.5 px-2">
                 {tag}
               </Badge>
             ))}
             {parsedTags.length > 4 && (
-              <span className="text-[11px] font-mono text-slate-500 self-center">
-                +{parsedTags.length - 4} more
+              <span className="text-[10px] font-mono text-slate-400 self-center font-semibold">
+                +{parsedTags.length - 4}
               </span>
             )}
           </div>
 
-          {/* Bottom Actions */}
-          <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+          {/* Card Footer Links */}
+          <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
             <button
               onClick={() => onQuickView(project)}
-              className="text-xs font-semibold text-slate-300 hover:text-orange-400 transition-colors flex items-center gap-1 cursor-pointer"
+              className="text-xs font-semibold text-slate-700 hover:text-[#0066FF] transition-colors flex items-center gap-1 cursor-pointer"
             >
               Quick Breakdown &rarr;
             </button>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-500 hover:text-slate-900 transition-colors"
                   aria-label="GitHub Repo"
                 >
                   <Github className="w-4 h-4" />
@@ -164,7 +164,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               )}
               <Link
                 href={`/projects/${project.slug}`}
-                className="text-xs font-mono text-orange-400 hover:underline"
+                className="text-xs font-mono text-[#0066FF] hover:underline font-bold"
               >
                 Case Study
               </Link>

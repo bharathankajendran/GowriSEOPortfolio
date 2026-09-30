@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ export interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  activeTab = "works",
+  activeTab = "home",
   onTabChange,
 }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -27,13 +26,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Official PDF Recommended Pages: Home | About | Projects | Contact
   const navLinks = [
-    { label: "Home", key: "home", href: "/" },
-    { label: "Works", key: "works", href: "#projects" },
-    { label: "Services", key: "services", href: "#services" },
-    { label: "Experience", key: "experience", href: "#experience" },
-    { label: "Reviews", key: "reviews", href: "#testimonials" },
-    { label: "Contact", key: "contact", href: "#contact" },
+    { label: "Home", key: "home" },
+    { label: "About", key: "about" },
+    { label: "Projects", key: "projects" },
+    { label: "Contact", key: "contact" },
   ];
 
   const handleNavClick = (
@@ -51,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "py-3 bg-[#0A0A0C]/80 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+          ? "py-3 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm"
           : "py-5 bg-transparent"
       }`}
     >
@@ -65,18 +63,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             <G2VertexLogo variant="compact" size="md" />
           </button>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1.5 bg-white/[0.04] border border-white/10 rounded-full p-1.5 backdrop-blur-md">
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center gap-1.5 bg-slate-100/90 border border-slate-200/90 rounded-full p-1.5 backdrop-blur-md">
             {navLinks.map((link) => {
               const isActive = activeTab === link.key;
               return (
                 <button
                   key={link.key}
                   onClick={(e) => handleNavClick(e, link.key)}
-                  className={`px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`px-5 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-bold shadow-md shadow-orange-500/25 scale-105"
-                      : "text-slate-300 hover:text-orange-400 hover:bg-white/5"
+                      ? "bg-[#0066FF] text-white font-bold shadow-sm"
+                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-200/60"
                   }`}
                 >
                   {link.label}
@@ -85,21 +83,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Action CTA */}
+          {/* Header CTA Button from PDF: Book a Growth Call */}
           <div className="hidden md:flex items-center gap-3">
             <Button
               variant="primary"
               size="sm"
               onClick={(e) => handleNavClick(e, "contact")}
+              className="font-bold px-5"
             >
-              Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
+              Book a Growth Call <ArrowUpRight className="w-4 h-4 ml-0.5" />
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-white/5 text-slate-300 hover:text-white"
+            className="md:hidden p-2 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900"
             aria-label="Toggle Navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -107,26 +106,26 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0D0F14]/95 border-b border-white/10 backdrop-blur-2xl"
+            className="md:hidden bg-white border-b border-slate-200 shadow-xl"
           >
-            <div className="px-4 pt-4 pb-6 space-y-3">
+            <div className="px-4 pt-4 pb-6 space-y-2">
               {navLinks.map((link) => {
                 const isActive = activeTab === link.key;
                 return (
                   <button
                     key={link.key}
                     onClick={(e) => handleNavClick(e, link.key)}
-                    className={`block w-full text-left px-4 py-2.5 text-base font-semibold rounded-xl transition-all ${
+                    className={`block w-full text-left px-4 py-2.5 text-sm font-semibold rounded-xl transition-all ${
                       isActive
-                        ? "bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-bold"
-                        : "text-slate-200 hover:text-orange-400 hover:bg-white/5"
+                        ? "bg-[#0066FF] text-white font-bold"
+                        : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
                     }`}
                   >
                     {link.label}
@@ -136,10 +135,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="pt-2">
                 <Button
                   variant="primary"
-                  className="w-full"
+                  className="w-full font-bold"
                   onClick={(e) => handleNavClick(e, "contact")}
                 >
-                  Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
+                  Book a Growth Call <ArrowUpRight className="w-4 h-4" />
                 </Button>
               </div>
             </div>
