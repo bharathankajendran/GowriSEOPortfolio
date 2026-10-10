@@ -48,15 +48,15 @@ export const ModalDrawer: React.FC<ModalDrawerProps> = ({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-3xl bg-[#0D0F14] border-l border-white/10 p-6 md:p-8 shadow-2xl overflow-y-auto"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-3xl bg-white border-l border-slate-200 p-6 md:p-8 shadow-2xl overflow-y-auto text-slate-900"
           >
-            <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
-              <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+            <div className="flex items-center justify-between pb-6 border-b border-slate-200 mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">
                 {title || "Project Breakdown"}
               </h2>
               <button
                 onClick={onClose}
-                className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
                 aria-label="Close drawer"
               >
                 <X className="w-5 h-5" />

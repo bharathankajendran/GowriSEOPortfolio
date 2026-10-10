@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion } from "framer-motion";
-import { Send, CheckCircle2, AlertCircle, Mail, Clock, MapPin, Sparkles, Loader2, ShieldCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle2, AlertCircle, Mail, Phone, Linkedin, Clock, MapPin, Sparkles, Loader2, ShieldCheck, X } from "lucide-react";
 import { contactFormSchema, ContactFormValues } from "@/lib/validations/contact";
 import { submitContactForm } from "@/app/actions/contact";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -12,10 +12,63 @@ import { Button } from "@/components/ui/button";
 
 export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showGuarantee, setShowGuarantee] = useState(false);
+  const [inquiryPopup, setInquiryPopup] = useState<{
+    show: boolean;
+    message: string;
+  }>({ show: false, message: "" });
   const [submissionStatus, setSubmissionStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
+
+  const guaranteeTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+  const inquiryTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  // Trigger Guarantee pop-up on demand; auto-clears after 10 seconds
+  const triggerGuaranteePopup = () => {
+    if (guaranteeTimerRef.current) clearTimeout(guaranteeTimerRef.current);
+    setShowGuarantee(true);
+    guaranteeTimerRef.current = setTimeout(() => {
+      setShowGuarantee(false);
+    }, 10000);
+  };
+
+  // Trigger Inquiry pop-up on demand; auto-clears after 10 seconds
+  const triggerInquiryPopup = (message?: string) => {
+    if (inquiryTimerRef.current) clearTimeout(inquiryTimerRef.current);
+    setInquiryPopup({
+      show: true,
+      message:
+        message ||
+        "Inquiry saved! Redirecting to contact@g2vertex.com in your email client...",
+    });
+    inquiryTimerRef.current = setTimeout(() => {
+      setInquiryPopup({ show: false, message: "" });
+    }, 10000);
+  };
+
+  // Cleanup timers on unmount
+  useEffect(() => {
+    return () => {
+      if (guaranteeTimerRef.current) clearTimeout(guaranteeTimerRef.current);
+      if (inquiryTimerRef.current) clearTimeout(inquiryTimerRef.current);
+    };
+  }, []);
+
+  const safeOpenUrl = (url: string) => {
+    try {
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.open(url, "_blank");
+    }
+  };
 
   const {
     register,
@@ -50,19 +103,34 @@ export const ContactSection = () => {
     setIsSubmitting(true);
     setSubmissionStatus({ type: null, message: "" });
 
+    // Prepare mailto URL with pre-filled subject and body
+    const subject = encodeURIComponent(
+      `[G2VERTEX Inquiry] ${data.service} - ${data.subject || data.name}`
+    );
+    const body = encodeURIComponent(
+      `Hi G2VERTEX Team,\n\nName: ${data.name}\nEmail: ${data.email}\nBusiness/Website: ${data.subject}\nService: ${data.service}\n\nMessage:\n${data.message}\n\nBest regards,\n${data.name}`
+    );
+    const mailtoUrl = `mailto:contact@g2vertex.com?subject=${subject}&body=${body}`;
+
     try {
       const res = await submitContactForm(data);
       if (res.success) {
-        setSubmissionStatus({ type: "success", message: res.message });
+        triggerInquiryPopup("Inquiry saved! Redirecting to contact@g2vertex.com in your email client...");
         reset();
       } else {
-        setSubmissionStatus({ type: "error", message: res.message });
+        triggerInquiryPopup("Redirecting to contact@g2vertex.com in your email client...");
       }
+
+      // Safe launch without aborting page window
+      setTimeout(() => {
+        safeOpenUrl(mailtoUrl);
+      }, 500);
     } catch {
-      setSubmissionStatus({
-        type: "error",
-        message: "Network error occurred. Please try again.",
-      });
+      // Even if network fails, redirect to email client so inquiry is never lost
+      triggerInquiryPopup("Redirecting to contact@g2vertex.com in your email client...");
+      setTimeout(() => {
+        safeOpenUrl(mailtoUrl);
+      }, 500);
     } finally {
       setIsSubmitting(false);
     }
@@ -70,9 +138,118 @@ export const ContactSection = () => {
 
   return (
     <section id="contact" className="py-20 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Floating Side Popups - Out of Tab on the Right Side */}
+      <div className="fixed top-20 sm:top-24 right-4 sm:right-8 z-50 flex flex-col gap-3 max-w-sm sm:max-w-md w-[calc(100%-2rem)] pointer-events-none">
+        <AnimatePresence>
+          {/* NO PRESSURE GUARANTEE Pop-up - Triggered by Direct Contact Details - Clears in 30s */}
+          {showGuarantee && (
+            <motion.div
+              key="guarantee-popup"
+              initial={{ opacity: 0, x: 60, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 60, scale: 0.95 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="pointer-events-auto p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-emerald-300 shadow-2xl relative overflow-hidden ring-1 ring-emerald-500/20"
+            >
+              {/* Visual 10-Second Countdown Progress Bar */}
+              <motion.div
+                key="guarantee-progress"
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 10, ease: "linear" }}
+                className="absolute top-0 left-0 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-t-full"
+              />
+
+              <div className="flex items-start justify-between gap-3 pt-1">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                    <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black tracking-wider text-emerald-900 uppercase">
+                        NO PRESSURE GUARANTEE
+                      </span>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full border border-emerald-200">
+                        Clears in 10s
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-700 font-medium leading-relaxed">
+                      No pressure. No generic pitch. Just a practical conversation about where growth could come from next.
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setShowGuarantee(false)}
+                  className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors shrink-0 cursor-pointer"
+                  title="Clear notice"
+                  aria-label="Clear notice"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+
+          {/* INQUIRY REDIRECT Pop-up - Triggered by What do you need help with tab / form submission - Clears in 10s */}
+          {inquiryPopup.show && (
+            <motion.div
+              key="inquiry-popup"
+              initial={{ opacity: 0, x: 60, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 60, scale: 0.95 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="pointer-events-auto p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-blue-300 shadow-2xl relative overflow-hidden ring-1 ring-blue-500/20"
+            >
+              {/* Visual 10-Second Countdown Progress Bar */}
+              <motion.div
+                key="inquiry-progress"
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 10, ease: "linear" }}
+                className="absolute top-0 left-0 h-1.5 bg-gradient-to-r from-[#0066FF] to-cyan-500 rounded-t-full"
+              />
+
+              <div className="flex items-start justify-between gap-3 pt-1">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                    <CheckCircle2 className="w-5 h-5 text-[#0066FF]" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black tracking-wider text-blue-900 uppercase">
+                        INQUIRY SUBMITTED
+                      </span>
+                      <span className="text-[10px] font-bold text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-full border border-blue-200">
+                        Clears in 10s
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-700 font-medium leading-relaxed">
+                      {inquiryPopup.message}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setInquiryPopup({ show: false, message: "" })}
+                  className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors shrink-0 cursor-pointer"
+                  title="Clear notice"
+                  aria-label="Clear notice"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
       {/* Section Header */}
       <div className="text-center space-y-4 mb-12">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono bg-blue-50 text-[#0066FF] border border-blue-200 font-semibold uppercase tracking-wider">
+        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-[#0066FF] border border-blue-200 uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" /> START A CONVERSATION
         </span>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -87,57 +264,130 @@ export const ContactSection = () => {
         {/* Left Column: Direct Info & Reassurance */}
         <div className="lg:col-span-5 space-y-5">
           <GlassCard className="p-7 space-y-5 bg-white border-slate-200 shadow-md">
-            <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-              Direct Contact Details
-            </h3>
+            <div
+              onClick={triggerGuaranteePopup}
+              className="flex items-center justify-between cursor-pointer group"
+              title="Click to view our No Pressure Guarantee"
+            >
+              <h3 className="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-[#0066FF] transition-colors">
+                Direct Contact Details
+              </h3>
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1 group-hover:bg-emerald-100 transition-colors shadow-xs">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Guarantee
+              </span>
+            </div>
             <p className="text-xs text-slate-600 leading-relaxed font-normal">
               Whether you need more qualified leads, better search visibility, or high-converting ad campaigns, G2VERTEX is ready to partner with you.
             </p>
 
             <div className="space-y-3.5 pt-4 border-t border-slate-100">
+              {/* Direct Phone */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-[#0066FF]" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">DIRECT MOBILE / PHONE</span>
+                  <a
+                    href="tel:+919385219979"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      triggerGuaranteePopup();
+                      safeOpenUrl("tel:+919385219979");
+                    }}
+                    className="text-xs font-bold text-slate-900 hover:text-[#0066FF] transition-colors cursor-pointer"
+                  >
+                    +91 93852 19979
+                  </a>
+                </div>
+              </div>
+
+              {/* Direct Email */}
               <div className="flex items-start gap-3.5">
                 <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4 text-[#0066FF]" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono text-slate-400 font-bold block uppercase">DIRECT EMAIL</span>
-                  <a href="mailto:contact@g2vertex.com" className="text-xs font-bold text-slate-900 hover:text-[#0066FF] transition-colors">
+                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">DIRECT EMAIL</span>
+                  <a
+                    href="mailto:contact@g2vertex.com"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      triggerGuaranteePopup();
+                      safeOpenUrl("mailto:contact@g2vertex.com");
+                    }}
+                    className="text-xs font-bold text-slate-900 hover:text-[#0066FF] transition-colors cursor-pointer"
+                  >
                     contact@g2vertex.com
                   </a>
                 </div>
               </div>
 
+              {/* LinkedIn Company */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
+                  <Linkedin className="w-4 h-4 text-[#0066FF]" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">OFFICIAL LINKEDIN</span>
+                  <a
+                    href="https://www.linkedin.com/company/g2-vertex/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs font-bold text-slate-900 hover:text-[#0066FF] transition-colors"
+                  >
+                    linkedin.com/company/g2-vertex
+                  </a>
+                </div>
+              </div>
+
+              {/* Response Time */}
               <div className="flex items-start gap-3.5">
                 <div className="w-9 h-9 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0">
                   <Clock className="w-4 h-4 text-sky-600" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono text-slate-400 font-bold block uppercase">RESPONSE TIME</span>
+                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">RESPONSE TIME</span>
                   <span className="text-xs font-bold text-slate-900">Under 24 Hours</span>
                 </div>
               </div>
 
+              {/* Location */}
               <div className="flex items-start gap-3.5">
                 <div className="w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
                   <MapPin className="w-4 h-4 text-emerald-600" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono text-slate-400 font-bold block uppercase">LOCATION</span>
+                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">LOCATION</span>
                   <span className="text-xs font-bold text-slate-900">Global Remote Agency</span>
                 </div>
               </div>
             </div>
-          </GlassCard>
 
-          {/* Reassurance Card from PDF */}
-          <div className="p-5 rounded-xl bg-emerald-50/80 border border-emerald-200 space-y-1.5 text-xs">
-            <span className="font-mono text-emerald-800 font-bold block uppercase text-[11px] flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" /> NO PRESSURE GUARANTEE
-            </span>
-            <p className="text-emerald-900 leading-relaxed font-medium">
-              No pressure. No generic pitch. Just a practical conversation about where growth could come from next.
-            </p>
-          </div>
+            {/* Quick Action Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+              <button
+                type="button"
+                onClick={() => {
+                  triggerGuaranteePopup();
+                  safeOpenUrl("mailto:contact@g2vertex.com");
+                }}
+                className="flex-1 py-2.5 px-3 rounded-xl bg-[#0066FF] text-white text-xs font-bold text-center hover:bg-blue-600 transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Mail className="w-3.5 h-3.5" /> Email Directly
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  triggerGuaranteePopup();
+                  safeOpenUrl("tel:+919385219979");
+                }}
+                className="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold text-center hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#0066FF]" /> Call Directly
+              </button>
+            </div>
+          </GlassCard>
         </div>
 
         {/* Right Column: Contact Form */}
@@ -146,7 +396,7 @@ export const ContactSection = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               {/* Service Pills */}
               <div>
-                <label className="block text-[11px] font-mono uppercase text-slate-600 font-bold mb-2">
+                <label className="block text-[11px] uppercase text-slate-600 font-bold mb-2 tracking-wider">
                   What do you need help with?
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -170,7 +420,7 @@ export const ContactSection = () => {
               {/* Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-[11px] font-mono uppercase text-slate-600 font-bold mb-1.5">
+                  <label htmlFor="name" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
                     Full Name *
                   </label>
                   <input
@@ -188,7 +438,7 @@ export const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-[11px] font-mono uppercase text-slate-600 font-bold mb-1.5">
+                  <label htmlFor="email" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
                     Work Email *
                   </label>
                   <input
@@ -208,7 +458,7 @@ export const ContactSection = () => {
 
               {/* Subject */}
               <div>
-                <label htmlFor="subject" className="block text-[11px] font-mono uppercase text-slate-600 font-bold mb-1.5">
+                <label htmlFor="subject" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
                   Business Name / Website URL *
                 </label>
                 <input
@@ -227,7 +477,7 @@ export const ContactSection = () => {
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-[11px] font-mono uppercase text-slate-600 font-bold mb-1.5">
+                <label htmlFor="message" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
                   Tell us about your growth goals *
                 </label>
                 <textarea
@@ -244,20 +494,7 @@ export const ContactSection = () => {
                 )}
               </div>
 
-              {/* Submission Alerts */}
-              {submissionStatus.type === "success" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-start gap-2.5"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <p className="text-xs text-emerald-800 font-bold">
-                    {submissionStatus.message}
-                  </p>
-                </motion.div>
-              )}
-
+              {/* Submission Error Alert */}
               {submissionStatus.type === "error" && (
                 <motion.div
                   initial={{ opacity: 0, y: -5 }}

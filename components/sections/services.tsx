@@ -44,7 +44,7 @@ export const ServicesSection: React.FC<ServicesProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-12">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono bg-blue-50 text-[#0066FF] border border-blue-200 font-semibold uppercase tracking-wider">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-[#0066FF] border border-blue-200 uppercase tracking-wider">
             WHAT WE DO
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -106,7 +106,7 @@ export const ServicesSection: React.FC<ServicesProps> = ({
                   <div className="pt-4 mt-4 border-t border-slate-100">
                     <a
                       href="#contact"
-                      className="text-xs font-mono font-bold text-[#0066FF] hover:text-[#0044B3] transition-colors flex items-center justify-between group/link"
+                      className="text-xs font-bold text-[#0066FF] hover:text-[#0044B3] transition-colors flex items-center justify-between group/link"
                     >
                       <span>Book Consultation</span>
                       <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

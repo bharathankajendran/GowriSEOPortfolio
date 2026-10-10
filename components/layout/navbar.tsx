@@ -63,36 +63,41 @@ export const Navbar: React.FC<NavbarProps> = ({
             <G2VertexLogo variant="compact" size="md" />
           </button>
 
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1.5 bg-slate-100/90 border border-slate-200/90 rounded-full p-1.5 backdrop-blur-md">
+          {/* Navigation Links - Clean Minimal Typography matching template */}
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive = activeTab === link.key;
               return (
                 <button
                   key={link.key}
                   onClick={(e) => handleNavClick(e, link.key)}
-                  className={`px-5 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+                  className={`text-sm font-semibold transition-colors cursor-pointer relative py-1 ${
                     isActive
-                      ? "bg-[#0066FF] text-white font-bold shadow-sm"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-200/60"
+                      ? "text-[#0066FF] font-bold"
+                      : "text-slate-700 hover:text-[#0066FF]"
                   }`}
                 >
                   {link.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#0066FF] rounded-full"
+                    />
+                  )}
                 </button>
               );
             })}
           </nav>
 
-          {/* Header CTA Button from PDF: Book a Growth Call */}
+          {/* Header CTA Button matching template purple-blue gradient pill */}
           <div className="hidden md:flex items-center gap-3">
-            <Button
-              variant="primary"
-              size="sm"
+            <button
+              type="button"
               onClick={(e) => handleNavClick(e, "contact")}
-              className="font-bold px-5"
+              className="rounded-full px-6 py-2.5 bg-gradient-to-r from-[#5B21B6] via-[#4338CA] to-[#0066FF] hover:opacity-95 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 cursor-pointer"
             >
-              Book a Growth Call <ArrowUpRight className="w-4 h-4 ml-0.5" />
-            </Button>
+              Book a Growth Call <ArrowUpRight className="w-4 h-4" />
+            </button>
           </div>
 
           {/* Mobile Menu Toggle */}

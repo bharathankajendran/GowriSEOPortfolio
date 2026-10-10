@@ -37,7 +37,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-outfit)", "Inter", "sans-serif"],
-        display: ["var(--font-outfit)", "Plus Jakarta Sans", "sans-serif"],
+        display: ["var(--font-outfit)", "Inter", "sans-serif"],
+        mono: ["var(--font-outfit)", "Inter", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -12,95 +12,122 @@ async function main() {
   await prisma.testimonial.deleteMany();
   await prisma.contactSubmission.deleteMany();
 
-  // 1. Projects (G2VERTEX Case Studies)
+  // 1. Projects (G2VERTEX Case Studies - Ordered)
   const projects = [
     {
-      slug: "performance-advertising-campaigns",
-      title: "Performance Advertising Scale",
-      tagline: "Turning Paid Media Budget into a Consistent Lead Flow",
-      category: "Paid Ads & PPC",
-      description: "Comprehensive multi-channel Google Ads, Meta Ads, and LinkedIn PPC campaigns engineered to target high-intent B2B audiences, reduce cost per acquisition, and scale qualified pipeline.",
-      client: "Apex Digital Growth",
-      duration: "3 Months",
-      thumbnailUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://g2vertex.com/projects/performance-advertising",
-      githubUrl: null,
-      featured: true,
-      tags: JSON.stringify(["Google Ads", "Meta Ads", "LinkedIn PPC", "Conversion Rate Optimization", "Retargeting"]),
-      challenges: "High customer acquisition costs and low lead quality across competitive B2B search keyword auctions.",
-      solution: "Implemented audience segmentation, landing page conversion funnels, custom conversion event tracking, and negative keyword filtering.",
-      metrics: JSON.stringify([
-        { label: "Cost Per Lead", value: "-42%" },
-        { label: "Qualified Pipeline", value: "+280%" },
-        { label: "ROAS Lift", value: "4.2x" }
-      ]),
-      architecture: "Google Search Ads + Meta Prospecting + LinkedIn InMail Outreach + Conversion Landing Pages."
-    },
-    {
-      slug: "linkedin-b2b-outreach-engine",
-      title: "LinkedIn B2B Outreach Engine",
-      tagline: "Starting Relevant Conversations with Targeted Decision Makers",
-      category: "B2B Outreach",
-      description: "Direct executive profile optimization, account-based targeting, and personalized message sequences designed to generate qualified meeting bookings for enterprise sales teams.",
-      client: "Nexus Enterprise Logic",
-      duration: "4 Months",
-      thumbnailUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://g2vertex.com/projects/linkedin-outreach",
-      githubUrl: null,
-      featured: true,
-      tags: JSON.stringify(["LinkedIn Sales Navigator", "Profile Optimization", "B2B Lead Gen", "Email Sequence Automation"]),
-      challenges: "Cold outreach emails yielding low open rates and missing key C-level decision-makers in targeted accounts.",
-      solution: "Created personalized multi-touch outreach sequences combining LinkedIn profile authority optimization with value-first content offers.",
-      metrics: JSON.stringify([
-        { label: "Acceptance Rate", value: "48%" },
-        { label: "Booked Demo Calls", value: "65+/mo" },
-        { label: "Sales Revenue Lift", value: "+$320k" }
-      ]),
-      architecture: "LinkedIn Sales Navigator + Custom CRM Integration + Automated Follow-Up Workflows."
-    },
-    {
-      slug: "seo-growth-search-domination",
-      title: "SEO Growth & Keyword Domination",
-      tagline: "Building Stronger Search Visibility for High-Intent Queries",
-      category: "Technical SEO",
-      description: "Full technical site audit, indexability fixes, Schema.org JSON-LD structured data injection, and strategic pillar content clusters to capture page-one Google rankings.",
-      client: "Search Scale Media",
-      duration: "6 Months",
-      thumbnailUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://g2vertex.com/projects/seo-growth",
-      githubUrl: null,
-      featured: true,
-      tags: JSON.stringify(["Technical SEO", "JSON-LD Schema", "Core Web Vitals", "Content Clustering", "Backlink Velocity"]),
-      challenges: "Stagnant organic search rankings due to crawl budget errors, slow page loads, and thin content structures.",
-      solution: "Optimized Core Web Vitals to 99+ PageSpeed, resolved duplicate canonical tags, and deployed topical authority content hubs.",
-      metrics: JSON.stringify([
-        { label: "Organic Traffic Growth", value: "+340%" },
-        { label: "Page 1 Keywords", value: "140+" },
-        { label: "PageSpeed Index", value: "99/100" }
-      ]),
-      architecture: "Next.js App Router + Schema.org Structured Engine + Technical Audit Checklist + Edge CDN."
-    },
-    {
+      order: 1,
       slug: "omnichannel-email-nurture-automation",
       title: "Email Nurture & Lead Engine",
-      tagline: "Automated Workflows that Re-Engage Prospects & Support Sales",
-      category: "Email Marketing",
-      description: "Automated drip email sequences, lead scoring models, and behavioral triggers designed to convert inactive leads into warm sales-ready conversations.",
-      client: "Aura Growth Systems",
-      duration: "2 Months",
+      tagline: "Turning Prospects into Opportunities",
+      category: "Email Nurture & Lead Engine",
+      description: "G2VERTEX designed targeted email campaigns, personalized messaging, and structured follow-up sequences to nurture prospects and encourage meaningful conversations.",
+      client: "B2B & Digital Services",
+      duration: "Ongoing",
       thumbnailUrl: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80",
-      liveUrl: "https://g2vertex.com/projects/email-nurture",
+      liveUrl: "/?tab=contact",
       githubUrl: null,
-      featured: false,
-      tags: JSON.stringify(["Klaviyo", "HubSpot Automation", "Lead Scoring", "Copywriting", "A/B Testing"]),
-      challenges: "High drop-off rate after initial content download without subsequent sales conversation bookings.",
-      solution: "Designed 7-part value-first nurture flow with dynamic personalization tags based on prospect industry and pain points.",
+      featured: true,
+      tags: JSON.stringify(["Email Campaigns", "Personalized Messaging", "Follow-up Sequences", "Lead Conversion", "Prospect Nurturing"]),
+      challenges: "Potential customers needed consistent follow-ups to stay engaged and move toward a purchase.",
+      solution: "G2VERTEX designed targeted email campaigns, personalized messaging, and structured follow-up sequences to nurture prospects and encourage meaningful conversations.",
       metrics: JSON.stringify([
-        { label: "Email Open Rate", value: "54%" },
-        { label: "Click-Through Rate", value: "14.2%" },
-        { label: "Re-engaged Pipeline", value: "+$180k" }
+        { label: "Nurturing Efficiency", value: "High" },
+        { label: "Engagement Lift", value: "Strong" },
+        { label: "Lead Pipeline", value: "Active" }
       ]),
-      architecture: "HubSpot Workflows + Dynamic Segment Filtering + Dedicated Landing Pages."
+      architecture: "A streamlined email nurturing process designed to strengthen engagement and support lead conversion."
+    },
+    {
+      order: 2,
+      slug: "seo-growth-search-domination",
+      title: "SEO Growth & Keyword Domination",
+      tagline: "How a Strategic SEO Approach Can Improve Search Visibility and Drive Qualified Organic Traffic",
+      category: "Technical SEO",
+      description: "A structured, data-driven SEO strategy to help businesses improve search engine visibility, target relevant keywords, and attract audiences with genuine purchase intent.",
+      client: "B2B & Business Services",
+      duration: "Ongoing",
+      thumbnailUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+      liveUrl: "/?tab=contact",
+      githubUrl: null,
+      featured: true,
+      tags: JSON.stringify(["Keyword Research", "On-Page SEO", "Technical SEO", "Content Strategy", "Organic Growth", "Rankings"]),
+      challenges: "Low keyword visibility, limited organic traffic, high competition, content gaps, technical SEO issues, and low-quality traffic.",
+      solution: "Strategic keyword research, on-page SEO optimization, technical SEO improvements, SEO content strategy, competitor analysis, and continuous performance tracking.",
+      metrics: JSON.stringify([
+        { label: "Search Visibility", value: "Growing" },
+        { label: "Organic Enquiries", value: "Qualified" },
+        { label: "Technical Health", value: "Optimized" }
+      ]),
+      architecture: "Sustainable organic growth built by aligning website content, technical performance, and keyword targeting with business goals."
+    },
+    {
+      order: 3,
+      slug: "linkedin-b2b-outreach-engine",
+      title: "B2B Case Study: Transforming UPVC Business Operations with an Integrated ERP/CRM Solution",
+      tagline: "Centralizing Essential Business Operations Into One Platform",
+      category: "B2B",
+      description: "G2 VERTEX offers a UPVC-focused Business Management ERP/CRM solution designed to bring essential business operations together in one centralized platform.",
+      client: "UPVC Window & Door Manufacturing",
+      duration: "Enterprise",
+      thumbnailUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      liveUrl: "/?tab=contact",
+      githubUrl: null,
+      featured: true,
+      tags: JSON.stringify(["UPVC ERP/CRM", "Quotation Management", "Inventory Control", "Job Workflows", "Order Tracking", "Vendor Management"]),
+      challenges: "Scattered customer information, quotation management difficulties, inventory visibility issues, disconnected workflows, and manual reporting.",
+      solution: "Integrated software solution covering CRM, Quotations, Sales Orders, Purchases, Inventory, Production, and Financial Insights.",
+      metrics: JSON.stringify([
+        { label: "Department Coordination", value: "Unified" },
+        { label: "Inventory Visibility", value: "Real-time" },
+        { label: "Business Reporting", value: "Structured" }
+      ]),
+      architecture: "Centralized ERP/CRM platform establishing a connected view of customer activity, sales, materials, purchasing, and financial records."
+    },
+    {
+      order: 4,
+      slug: "b2c-customer-acquisition-engine",
+      title: "Case Study: B2C Lead Generation for a US Home Services Company",
+      tagline: "Turn Potential Customers into Real Opportunities",
+      category: "B2C",
+      description: "A targeted lead generation approach focused on audience research, targeted marketing, lead qualification, and performance tracking.",
+      client: "Home Services — HVAC & Air Conditioning",
+      duration: "United States Market",
+      thumbnailUrl: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
+      liveUrl: "/?tab=contact",
+      githubUrl: null,
+      featured: true,
+      tags: JSON.stringify(["HVAC & AC Services", "Home Services", "Audience Research", "Targeted Marketing", "Lead Qualification", "Performance Tracking"]),
+      challenges: "A home services company wanted to connect with more homeowners who needed air conditioning installation, repair, and maintenance services.",
+      solution: "G2VERTEX developed a targeted lead generation approach focused on audience research, targeted marketing, lead qualification, and performance tracking.",
+      metrics: JSON.stringify([
+        { label: "Audience Targeting", value: "Precise" },
+        { label: "Service Inquiries", value: "Qualified" },
+        { label: "Customer Acquisition", value: "Consistent" }
+      ]),
+      architecture: "Structured lead generation process designed to improve audience targeting, attract relevant inquiries, and help the business identify potential customers."
+    },
+    {
+      order: 5,
+      slug: "performance-advertising-campaigns",
+      title: "Performance Advertising Scale",
+      tagline: "Scaling Digital Advertising for Better Lead Generation, Conversion Efficiency, and Business Growth",
+      category: "Performance Advertising Scale",
+      description: "A performance-driven approach to digital advertising combining audience research, strategic campaign planning, conversion tracking, and continuous optimization.",
+      client: "B2B & Business Services",
+      duration: "Ongoing",
+      thumbnailUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      liveUrl: "/?tab=contact",
+      githubUrl: null,
+      featured: true,
+      tags: JSON.stringify(["Google Ads", "Meta Ads", "Audience Targeting", "Conversion Tracking", "ROAS Scaling", "CPL Optimization"]),
+      challenges: "Rising acquisition costs, low-quality leads, limited conversion visibility, audience saturation, unoptimized landing pages, and scaling uncertainty.",
+      solution: "Audience research, campaign architecture, conversion tracking, creative & messaging optimization, landing page refinement, and budget scaling.",
+      metrics: JSON.stringify([
+        { label: "Lead Generation", value: "Consistent" },
+        { label: "Conversion Efficiency", value: "Optimized" },
+        { label: "Campaign Scale", value: "Measurable" }
+      ]),
+      architecture: "Google Ads + Meta Ads + Conversion Tracking + Landing Page Optimization + Continual Performance Scaling."
     }
   ];
 
@@ -123,7 +150,7 @@ async function main() {
       title: "Lead Generation",
       description: "Campaigns and outreach systems engineered to create a reliable, predictable pipeline of qualified prospects ready for sales.",
       iconName: "Zap",
-      features: JSON.stringify(["Qualified Pipeline Systems", "B2B Prospect Targeting", "Conversion Landing Pages", "CRM Lead Syncing"]),
+      features: JSON.stringify(["Qualified Pipeline Systems", "B2B & B2C Prospect Targeting", "Conversion Landing Pages", "CRM Lead Syncing"]),
       order: 2
     },
     {
@@ -207,31 +234,13 @@ async function main() {
     await prisma.experience.create({ data: exp });
   }
 
-  // 4. Testimonials (Client Endorsements from PDF Copy)
+  // 4. Testimonials (Sole Featured Reviewer)
   const testimonials = [
     {
-      name: "Marcus Vance",
-      role: "CEO & Co-Founder",
-      company: "Apex Digital Growth",
-      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-      content: "G2VERTEX is a true growth partner. They don't report vanity metrics; every campaign is tied to qualified leads and revenue. Our organic traffic and paid conversion rates both doubled within 90 days!",
-      rating: 5,
-      featured: true
-    },
-    {
-      name: "Elena Rostova",
-      role: "VP of Marketing",
-      company: "Nexus Enterprise Logic",
-      avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-      content: "The LinkedIn outreach engine and SEO performance strategy built by G2VERTEX generated 60+ C-level demo calls per month for our enterprise sales team. Outstanding execution!",
-      rating: 5,
-      featured: true
-    },
-    {
-      name: "David Chen",
-      role: "Head of Growth",
-      company: "Search Scale Media",
-      avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      name: "Rangaraj",
+      role: "Founder",
+      company: "Ahattrickz InfoTech",
+      avatarUrl: "",
       content: "No pressure, no generic pitch. G2VERTEX delivered clear reporting, transparent execution, and continuous optimization. They turned our digital presence into a real growth engine.",
       rating: 5,
       featured: true

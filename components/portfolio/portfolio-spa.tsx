@@ -67,8 +67,34 @@ function PortfolioSPAContent({
     []
   );
 
+  useEffect(() => {
+    const handleGlobalAnchorClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest("a");
+      if (!target) return;
+      const href = target.getAttribute("href");
+      if (!href) return;
+
+      if (href === "#contact") {
+        e.preventDefault();
+        handleTabChange("contact");
+      } else if (href === "#projects") {
+        e.preventDefault();
+        handleTabChange("projects");
+      } else if (href === "#about") {
+        e.preventDefault();
+        handleTabChange("about");
+      } else if (href === "#home" || href === "#hero") {
+        e.preventDefault();
+        handleTabChange("home");
+      }
+    };
+
+    window.addEventListener("click", handleGlobalAnchorClick, true);
+    return () => window.removeEventListener("click", handleGlobalAnchorClick, true);
+  }, [handleTabChange]);
+
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-700 flex flex-col justify-between">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-[#0f62fe] selection:text-white flex flex-col justify-between">
       {/* Dynamic Navbar */}
       <Navbar activeTab={activeTab} onTabChange={handleTabChange} />
 
@@ -87,7 +113,7 @@ function PortfolioSPAContent({
               {/* Home Page: Hero + What We Do + Why G2VERTEX + Projects + Testimonials */}
               {activeTab === "home" && (
                 <div className="space-y-12 sm:space-y-16">
-                  <HeroSection />
+                  <HeroSection onTabChange={handleTabChange} />
                   <ServicesSection initialServices={services} />
                   <ExperienceTimeline initialExperiences={experiences} />
                   <PortfolioGrid initialProjects={projects} />
@@ -121,7 +147,7 @@ function PortfolioSPAContent({
         </div>
       </main>
 
-      <Footer />
+      <Footer onTabChange={handleTabChange} />
     </div>
   );
 }

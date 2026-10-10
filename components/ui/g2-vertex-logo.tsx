@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 interface G2VertexLogoProps {
-  variant?: "full" | "compact" | "icon";
+  variant?: "full" | "compact" | "icon" | "horizontal";
   className?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   isDarkBackground?: boolean;
+  priority?: boolean;
 }
 
 export const G2VertexLogo: React.FC<G2VertexLogoProps> = ({
@@ -14,98 +16,105 @@ export const G2VertexLogo: React.FC<G2VertexLogoProps> = ({
   className = "",
   size = "md",
   isDarkBackground = false,
+  priority = true,
 }) => {
-  const iconSizes = {
-    sm: "w-8 h-8",
-    md: "w-9 h-9",
-    lg: "w-12 h-12",
+  // Height presets for different sizes
+  const heightClasses = {
+    sm: "h-9",
+    md: "h-12 sm:h-14",
+    lg: "h-16 sm:h-20",
+    xl: "h-24 sm:h-28",
   };
 
-  const textSizes = {
-    sm: "text-sm",
-    md: "text-base",
-    lg: "text-xl",
+  const iconHeightClasses = {
+    sm: "h-7 w-auto",
+    md: "h-9 w-auto",
+    lg: "h-12 w-auto",
+    xl: "h-16 w-auto",
   };
 
-  const textColorMain = isDarkBackground ? "text-white" : "text-slate-900";
-  const textColorSub = isDarkBackground ? "text-slate-400" : "text-slate-500";
+  const heightStyles = {
+    sm: { maxHeight: "36px", width: "auto" },
+    md: { maxHeight: "48px", width: "auto" },
+    lg: { maxHeight: "72px", width: "auto" },
+    xl: { maxHeight: "96px", width: "auto" },
+  };
 
-  return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      {/* Emblem Icon */}
-      <div className={`relative ${iconSizes[size]} flex-shrink-0 group`}>
-        <svg
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
-        >
-          <defs>
-            <linearGradient id="g2v-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0066FF" />
-              <stop offset="100%" stopColor="#0044B3" />
-            </linearGradient>
+  const iconStyles = {
+    sm: { maxHeight: "28px", width: "auto" },
+    md: { maxHeight: "36px", width: "auto" },
+    lg: { maxHeight: "48px", width: "auto" },
+    xl: { maxHeight: "64px", width: "auto" },
+  };
 
-            <linearGradient id="g2v-orange" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF5500" />
-              <stop offset="100%" stopColor="#E64A00" />
-            </linearGradient>
-          </defs>
+  // If icon-only variant requested
+  if (variant === "icon") {
+    const iconSrc = isDarkBackground
+      ? "/images/g2-vertex-emblem-dark.png"
+      : "/images/g2-vertex-emblem.png";
 
-          {/* Background Container */}
-          <rect
-            x="4"
-            y="4"
-            width="92"
-            height="92"
-            rx="22"
-            fill={isDarkBackground ? "#0B192C" : "#F8FAFC"}
-            stroke={isDarkBackground ? "rgba(255, 255, 255, 0.15)" : "#CBD5E1"}
-            strokeWidth="2"
-          />
-
-          {/* Emblem G */}
-          <path
-            d="M 46 26 C 30 26 22 34 22 50 C 22 66 30 74 46 74 L 56 74 L 56 58 L 42 58 L 42 48 L 66 48 L 66 74 C 66 74 54 74 46 74 Z"
-            fill={isDarkBackground ? "#1E293B" : "#E2E8F0"}
-            stroke="#94A3B8"
-            strokeWidth="1.5"
-          />
-
-          {/* Emblem 2 Arrow */}
-          <path
-            d="M 44 26 L 68 26 C 76 26 80 32 80 40 C 80 48 72 54 58 64 L 78 64 L 78 74 L 38 74 L 56 58 C 66 48 66 40 58 36 C 54 34 48 34 44 36 Z"
-            fill="url(#g2v-blue)"
-          />
-
-          {/* Vertex Growth Arrow ↗ */}
-          <path
-            d="M 62 44 L 84 18 M 84 18 L 68 18 M 84 18 L 84 34"
-            stroke="url(#g2v-orange)"
-            strokeWidth="7"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+    return (
+      <div className={`inline-flex items-center select-none group ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={iconSrc}
+          alt="G2 VERTEX Emblem"
+          style={iconStyles[size]}
+          className={`${iconHeightClasses[size]} object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-200`}
+          loading={priority ? "eager" : "lazy"}
+        />
       </div>
+    );
+  }
 
-      {/* Brand Typography */}
-      {variant !== "icon" && (
+  // If horizontal lockup variant requested (emblem + styled text)
+  if (variant === "horizontal") {
+    const emblemSrc = isDarkBackground
+      ? "/images/g2-vertex-emblem-dark.png"
+      : "/images/g2-vertex-emblem.png";
+    const textMain = isDarkBackground ? "text-white" : "text-slate-950";
+    const textSub = isDarkBackground ? "text-slate-400" : "text-slate-600";
+
+    return (
+      <div className={`inline-flex items-center gap-3 select-none group ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={emblemSrc}
+          alt="G2V Emblem"
+          style={iconStyles[size]}
+          className={`${iconHeightClasses[size]} object-contain group-hover:scale-105 transition-transform duration-200`}
+          loading={priority ? "eager" : "lazy"}
+        />
         <div className="flex flex-col justify-center">
-          <div
-            className={`${textSizes[size]} font-black tracking-tight ${textColorMain} flex items-center gap-1 leading-none`}
-          >
-            <span className="text-[#0066FF] font-black">
-              G2
-            </span>
-            <span className="tracking-wider font-extrabold">VERTEX</span>
+          <div className={`font-black tracking-wider text-base sm:text-lg leading-none ${textMain} flex items-center`}>
+            <span>G</span>
+            <span className="text-[#0066FF]">2</span>
+            <span className="ml-1 tracking-widest font-extrabold">VERTEX</span>
           </div>
-
-          <span className={`text-[10px] ${textColorSub} font-mono tracking-widest uppercase mt-1 flex items-center gap-1 font-semibold`}>
-            DIGITAL CONSULTING <span className="text-[#0066FF]">•</span> IT &amp; SEO
+          <span className={`text-[9px] sm:text-[10px] ${textSub} font-medium tracking-widest uppercase mt-1 flex items-center gap-1.5`}>
+            DIGITAL MARKETING <span className="text-[#0066FF] font-bold">|</span> IT &amp; SERVICES CONSULTING
           </span>
         </div>
-      )}
+      </div>
+    );
+  }
+
+  // Full / Compact official stacked logo as provided in user reference
+  const logoSrc = isDarkBackground
+    ? "/images/g2-vertex-logo-dark.png"
+    : "/images/g2-vertex-logo-transparent.png";
+
+  return (
+    <div className={`inline-flex items-center select-none group ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={logoSrc}
+        alt="G2 VERTEX - Digital Marketing | IT & Services Consulting"
+        style={heightStyles[size]}
+        className={`${heightClasses[size]} w-auto object-contain drop-shadow-sm group-hover:opacity-95 group-hover:scale-[1.02] transition-all duration-200`}
+        loading={priority ? "eager" : "lazy"}
+      />
     </div>
   );
 };
+

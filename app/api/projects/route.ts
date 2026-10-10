@@ -19,9 +19,26 @@ export async function GET(request: Request) {
       whereClause.featured = true;
     }
 
-    const projects = await prisma.project.findMany({
+    const rawProjects = await prisma.project.findMany({
       where: whereClause,
       orderBy: { createdAt: "desc" },
+    });
+
+    const projectOrder = [
+      "omnichannel-email-nurture-automation",
+      "seo-growth-search-domination",
+      "linkedin-b2b-outreach-engine",
+      "b2c-customer-acquisition-engine",
+      "performance-advertising-campaigns",
+    ];
+
+    const projects = [...rawProjects].sort((a, b) => {
+      const idxA = projectOrder.indexOf(a.slug);
+      const idxB = projectOrder.indexOf(b.slug);
+      if (idxA === -1 && idxB === -1) return 0;
+      if (idxA === -1) return 1;
+      if (idxB === -1) return -1;
+      return idxA - idxB;
     });
 
     return NextResponse.json({

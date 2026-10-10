@@ -32,7 +32,7 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = () => {
     },
     {
       title: "Channel expertise",
-      description: "We deploy the optimal mix of paid advertising, organic search, targeted email, and direct B2B outreach.",
+      description: "We deploy the optimal mix of paid advertising, organic search, targeted email, and B2B & B2C prospect targeting and outreach.",
       icon: BarChart3,
       color: "text-emerald-700",
       bg: "bg-emerald-50 border-emerald-200",
@@ -72,7 +72,7 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = () => {
     <section id="experience" className="py-20 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section 1: Why G2VERTEX */}
       <div className="text-center space-y-4 mb-12">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono bg-blue-50 text-[#0066FF] border border-blue-200 font-semibold uppercase tracking-wider">
+        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-[#0066FF] border border-blue-200 uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" /> WHY G2VERTEX
         </span>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -109,14 +109,14 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = () => {
       {/* Section 2: 5-Step Growth Approach */}
       <div className="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-12 mb-20">
         <div className="text-center space-y-3 mb-10">
-          <span className="text-xs font-mono font-bold text-[#0066FF] uppercase tracking-widest block">HOW WE WORK</span>
+          <span className="text-xs font-bold text-[#0066FF] uppercase tracking-widest block">HOW WE WORK</span>
           <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900">Our 5-Step Growth Approach</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {approachSteps.map((s, idx) => (
             <div key={s.step} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
-              <div className="text-xl font-black font-mono text-[#0066FF]">{s.step}</div>
+              <div className="text-xl font-black text-[#0066FF]">{s.step}</div>
               <h4 className="text-sm font-extrabold text-slate-900">{s.title}</h4>
               <p className="text-[11px] text-slate-600 leading-relaxed">{s.text}</p>
             </div>
@@ -127,7 +127,7 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = () => {
       {/* Section 3: Core Agency Values */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-lg">
         <div className="lg:col-span-4 space-y-3">
-          <span className="text-xs font-mono font-bold text-[#0066FF] uppercase tracking-widest block">OUR VALUES</span>
+          <span className="text-xs font-bold text-[#0066FF] uppercase tracking-widest block">OUR VALUES</span>
           <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">Built on Trust, Ownership &amp; Impact</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
             We operate as an extension of your growth team, taking full responsibility for momentum and continuous improvement.
