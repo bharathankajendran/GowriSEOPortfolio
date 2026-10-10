@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { getCaseStudyBySlug } from "@/lib/case-studies-data";
+import { FALLBACK_PROJECTS } from "@/lib/fallback-data";
 
 interface PageProps {
   params: {
@@ -19,9 +20,17 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const caseStudy = getCaseStudyBySlug(params.slug);
-  const project = await prisma.project.findUnique({
-    where: { slug: params.slug },
-  });
+  let project = null;
+  try {
+    project = await prisma.project.findUnique({
+      where: { slug: params.slug },
+    });
+  } catch {
+    project = FALLBACK_PROJECTS.find((p) => p.slug === params.slug) || null;
+  }
+  if (!project) {
+    project = FALLBACK_PROJECTS.find((p) => p.slug === params.slug) || null;
+  }
 
   const title = caseStudy?.title || project?.title || "Case Study";
   const description = caseStudy?.subtitle || project?.tagline || "G2VERTEX Client Case Study";
@@ -33,9 +42,28 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function ProjectCaseStudyPage({ params }: PageProps) {
-  const project = await prisma.project.findUnique({
-    where: { slug: params.slug },
-  });
+  let project = null;
+  let allProjects: Array<{ slug: string; title: string }> = [];
+
+  try {
+    project = await prisma.project.findUnique({
+      where: { slug: params.slug },
+    });
+    allProjects = await prisma.project.findMany({
+      select: { slug: true, title: true },
+      orderBy: { createdAt: "desc" },
+    });
+  } catch {
+    project = FALLBACK_PROJECTS.find((p) => p.slug === params.slug) || null;
+    allProjects = FALLBACK_PROJECTS.map((p) => ({ slug: p.slug, title: p.title }));
+  }
+
+  if (!project) {
+    project = FALLBACK_PROJECTS.find((p) => p.slug === params.slug) || null;
+  }
+  if (allProjects.length === 0) {
+    allProjects = FALLBACK_PROJECTS.map((p) => ({ slug: p.slug, title: p.title }));
+  }
 
   const caseStudy = getCaseStudyBySlug(params.slug);
 
@@ -43,17 +71,11 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     notFound();
   }
 
-  // Fetch adjacent projects for navigation
-  const allProjects = await prisma.project.findMany({
-    select: { slug: true, title: true },
-    orderBy: { createdAt: "desc" },
-  });
-
   const currentSlug = project?.slug || params.slug;
   const currentIndex = allProjects.findIndex((p: { slug: string }) => p.slug === currentSlug);
-  const nextProject = allProjects.length > 0 ? allProjects[(currentIndex + 1) % allProjects.length] : null;
+  const nextProject = allProjects.length > 0 && currentIndex !== -1 ? allProjects[(currentIndex + 1) % allProjects.length] : null;
   const prevProject =
-    allProjects.length > 0 ? allProjects[(currentIndex - 1 + allProjects.length) % allProjects.length] : null;
+    allProjects.length > 0 && currentIndex !== -1 ? allProjects[(currentIndex - 1 + allProjects.length) % allProjects.length] : null;
 
   const parsedTags: string[] = caseStudy?.tags || JSON.parse(project?.tags || "[]");
 

@@ -26,17 +26,21 @@ export async function submitContactForm(
 
     const { name, email, subject, service, message } = validationResult.data;
 
-    // 2. Persist to Prisma Database
-    await prisma.contactSubmission.create({
-      data: {
-        name,
-        email,
-        subject,
-        service: service || "General Inquiry",
-        message,
-        status: "PENDING",
-      },
-    });
+    // 2. Persist to Prisma Database (if available)
+    try {
+      await prisma.contactSubmission.create({
+        data: {
+          name,
+          email,
+          subject,
+          service: service || "General Inquiry",
+          message,
+          status: "PENDING",
+        },
+      });
+    } catch (dbError) {
+      console.warn("⚠️ Contact submission logged (DB unavailable on serverless):", { name, email, subject, service, message }, dbError);
+    }
 
     return {
       success: true,

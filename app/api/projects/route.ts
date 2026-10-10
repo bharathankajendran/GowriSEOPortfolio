@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { FALLBACK_PROJECTS } from "@/lib/fallback-data";
 
 export const dynamic = "force-dynamic";
 
@@ -19,10 +20,19 @@ export async function GET(request: Request) {
       whereClause.featured = true;
     }
 
-    const rawProjects = await prisma.project.findMany({
-      where: whereClause,
-      orderBy: { createdAt: "desc" },
-    });
+    let rawProjects = [];
+    try {
+      rawProjects = await prisma.project.findMany({
+        where: whereClause,
+        orderBy: { createdAt: "desc" },
+      });
+    } catch {
+      rawProjects = FALLBACK_PROJECTS;
+    }
+
+    if (!rawProjects || rawProjects.length === 0) {
+      rawProjects = FALLBACK_PROJECTS;
+    }
 
     const projectOrder = [
       "omnichannel-email-nurture-automation",

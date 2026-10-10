@@ -10,7 +10,7 @@ export interface TestimonialData {
   name: string;
   role: string;
   company: string;
-  avatarUrl: string;
+  avatarUrl: string | null;
   content: string;
   rating: number;
   featured: boolean;

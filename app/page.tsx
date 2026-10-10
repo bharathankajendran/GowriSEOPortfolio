@@ -1,26 +1,49 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
 import { PortfolioSPA } from "@/components/portfolio/portfolio-spa";
+import {
+  FALLBACK_PROJECTS,
+  FALLBACK_SERVICES,
+  FALLBACK_EXPERIENCES,
+  FALLBACK_TESTIMONIALS,
+} from "@/lib/fallback-data";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  // Server-side fetching via Prisma
-  const [projects, services, experiences, testimonials] = await Promise.all([
-    prisma.project.findMany({
-      orderBy: { createdAt: "desc" },
-    }),
-    prisma.service.findMany({
-      orderBy: { order: "asc" },
-    }),
-    prisma.experience.findMany({
-      orderBy: { order: "asc" },
-    }),
-    prisma.testimonial.findMany({
-      where: { featured: true },
-      orderBy: { createdAt: "desc" },
-    }),
-  ]);
+  let projects = [];
+  let services = [];
+  let experiences = [];
+  let testimonials = [];
+
+  try {
+    const [dbProjects, dbServices, dbExperiences, dbTestimonials] = await Promise.all([
+      prisma.project.findMany({
+        orderBy: { createdAt: "desc" },
+      }),
+      prisma.service.findMany({
+        orderBy: { order: "asc" },
+      }),
+      prisma.experience.findMany({
+        orderBy: { order: "asc" },
+      }),
+      prisma.testimonial.findMany({
+        where: { featured: true },
+        orderBy: { createdAt: "desc" },
+      }),
+    ]);
+
+    projects = dbProjects.length > 0 ? dbProjects : FALLBACK_PROJECTS;
+    services = dbServices.length > 0 ? dbServices : FALLBACK_SERVICES;
+    experiences = dbExperiences.length > 0 ? dbExperiences : FALLBACK_EXPERIENCES;
+    testimonials = dbTestimonials.length > 0 ? dbTestimonials : FALLBACK_TESTIMONIALS;
+  } catch (error) {
+    console.warn("⚠️ Database query failed or SQLite unavailable on serverless. Using fallback data:", error);
+    projects = FALLBACK_PROJECTS;
+    services = FALLBACK_SERVICES;
+    experiences = FALLBACK_EXPERIENCES;
+    testimonials = FALLBACK_TESTIMONIALS;
+  }
 
   // Exact project order requested by user:
   // 1. Email Nurture & Lead Engine
