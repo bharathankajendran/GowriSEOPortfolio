@@ -8,7 +8,7 @@ import {
   FALLBACK_TESTIMONIALS,
 } from "@/lib/fallback-data";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export default async function HomePage() {
   let projects = [];

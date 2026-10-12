@@ -1,6 +1,3 @@
-"use server";
-
-import { prisma } from "@/lib/prisma";
 import { contactFormSchema, ContactFormValues } from "@/lib/validations/contact";
 
 export interface ContactActionResult {
@@ -13,7 +10,6 @@ export async function submitContactForm(
   data: ContactFormValues
 ): Promise<ContactActionResult> {
   try {
-    // 1. Validate payload with Zod
     const validationResult = contactFormSchema.safeParse(data);
 
     if (!validationResult.success) {
@@ -24,33 +20,15 @@ export async function submitContactForm(
       };
     }
 
-    const { name, email, subject, service, message } = validationResult.data;
-
-    // 2. Persist to Prisma Database (if available)
-    try {
-      await prisma.contactSubmission.create({
-        data: {
-          name,
-          email,
-          subject,
-          service: service || "General Inquiry",
-          message,
-          status: "PENDING",
-        },
-      });
-    } catch (dbError) {
-      console.warn("⚠️ Contact submission logged (DB unavailable on serverless):", { name, email, subject, service, message }, dbError);
-    }
-
     return {
       success: true,
       message: "Thank you! Your message has been sent successfully. I will get back to you within 24 hours.",
     };
   } catch (error) {
-    console.error("❌ Contact Form Server Action Error:", error);
+    console.error("❌ Contact Form Error:", error);
     return {
       success: false,
-      message: "An unexpected error occurred while submitting your message. Please try again or reach out directly via email.",
+      message: "An unexpected error occurred while submitting your message. Please reach out directly via email.",
     };
   }
 }

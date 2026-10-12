@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Github, Linkedin, Mail, Phone, Sparkles } from "lucide-react";

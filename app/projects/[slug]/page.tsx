@@ -41,6 +41,12 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
+export function generateStaticParams() {
+  return FALLBACK_PROJECTS.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
 export default async function ProjectCaseStudyPage({ params }: PageProps) {
   let project = null;
   let allProjects: Array<{ slug: string; title: string }> = [];
@@ -333,10 +339,11 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                 Partner with G2 VERTEX to build a tailored strategy aligned with your business goals.
               </p>
             </div>
-            <Link href="/?tab=contact">
-              <Button variant="primary" size="lg" className="whitespace-nowrap font-bold text-sm px-8 shadow-sm">
-                {caseStudy?.ctaText || "Book a Growth Call"} <ArrowUpRight className="w-5 h-5 ml-1" />
-              </Button>
+            <Link
+              href="/?tab=contact"
+              className="whitespace-nowrap font-bold text-sm px-8 py-3.5 rounded-xl bg-[#0066FF] hover:bg-[#0052CC] text-white shadow-md shadow-blue-500/15 border border-blue-600/30 inline-flex items-center justify-center transition-all duration-200 active:scale-[0.98] cursor-pointer"
+            >
+              {caseStudy?.ctaText || "Book a Growth Call"} <ArrowUpRight className="w-5 h-5 ml-1" />
             </Link>
           </div>
         </div>
