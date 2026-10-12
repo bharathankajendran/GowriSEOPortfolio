@@ -40,17 +40,17 @@ export const ServicesSection: React.FC<ServicesProps> = ({
   };
 
   return (
-    <section id="services" className="py-20 relative z-10 bg-[#F8FAFC] border-y border-slate-200">
+    <section id="services" className="py-20 relative z-10 bg-[#E8F2FD] dark:bg-[#0B1528] border-y border-[#D0E2F7] dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-12">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-[#0066FF] border border-blue-200 uppercase tracking-wider">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-[#0066FF] dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 uppercase tracking-wider">
             WHAT WE DO
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Marketing that moves your <span className="text-[#0066FF]">business forward.</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Marketing that moves your <span className="text-[#0066FF] dark:text-[#38BDF8]">business forward.</span>
           </h2>
-          <p className="text-slate-600 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
             We combine creative thinking, targeting, data, and consistent optimization to help you reach the people most likely to become long-term customers.
           </p>
         </div>
@@ -73,29 +73,31 @@ export const ServicesSection: React.FC<ServicesProps> = ({
               >
                 <GlassCard
                   className={`h-full flex flex-col justify-between transition-all duration-300 ${
-                    isHovered ? "bg-white border-blue-300 shadow-xl" : "bg-white border-slate-200 shadow-sm"
+                    isHovered
+                      ? "bg-white dark:bg-slate-900 border-blue-300 dark:border-blue-700 shadow-xl"
+                      : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 shadow-sm"
                   }`}
                 >
                   <div className="space-y-4">
                     {/* Icon */}
-                    <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 text-[#0066FF] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 text-[#0066FF] dark:text-blue-400 flex items-center justify-center">
                       <Icon className="w-6 h-6" />
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-extrabold text-slate-900 tracking-tight">
+                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white tracking-tight">
                         {service.title}
                       </h3>
-                      <p className="text-xs text-slate-600 mt-2 leading-relaxed font-normal">
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed font-normal">
                         {service.description}
                       </p>
                     </div>
 
                     {/* Features List */}
-                    <div className="pt-3 border-t border-slate-100 space-y-2">
+                    <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
                       {parsedFeatures.map((feat) => (
-                        <div key={feat} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0066FF] shrink-0" />
+                        <div key={feat} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0066FF] dark:text-blue-400 shrink-0" />
                           <span>{feat}</span>
                         </div>
                       ))}
@@ -103,10 +105,10 @@ export const ServicesSection: React.FC<ServicesProps> = ({
                   </div>
 
                   {/* Action Link */}
-                  <div className="pt-4 mt-4 border-t border-slate-100">
+                  <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
                     <a
                       href="#contact"
-                      className="text-xs font-bold text-[#0066FF] hover:text-[#0044B3] transition-colors flex items-center justify-between group/link"
+                      className="text-xs font-bold text-[#0066FF] dark:text-blue-400 hover:text-[#0044B3] dark:hover:text-blue-300 transition-colors flex items-center justify-between group/link"
                     >
                       <span>Book Consultation</span>
                       <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

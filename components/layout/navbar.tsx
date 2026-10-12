@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { G2VertexLogo } from "@/components/ui/g2-vertex-logo";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export interface NavbarProps {
   activeTab?: string;
@@ -49,16 +50,16 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "py-3 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm"
+          ? "py-3 bg-white/90 dark:bg-[#0A0F1D]/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm"
           : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Brand Logo - with white background in dark mode only */}
           <button
             onClick={(e) => handleNavClick(e, "home")}
-            className="flex items-center gap-2 group cursor-pointer text-left focus:outline-none"
+            className="flex items-center gap-2 group cursor-pointer text-left focus:outline-none dark:bg-white dark:px-3.5 dark:py-1.5 dark:rounded-xl dark:shadow-md transition-all"
           >
             <G2VertexLogo variant="compact" size="md" />
           </button>
@@ -73,15 +74,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={(e) => handleNavClick(e, link.key)}
                   className={`text-sm font-semibold transition-colors cursor-pointer relative py-1 ${
                     isActive
-                      ? "text-[#0066FF] font-bold"
-                      : "text-slate-700 hover:text-[#0066FF]"
+                      ? "text-[#0066FF] dark:text-[#38BDF8] font-bold"
+                      : "text-slate-700 dark:text-slate-300 hover:text-[#0066FF] dark:hover:text-[#38BDF8]"
                   }`}
                 >
                   {link.label}
                   {isActive && (
                     <motion.span
                       layoutId="nav-active-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#0066FF] rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#0066FF] dark:bg-[#38BDF8] rounded-full"
                     />
                   )}
                 </button>
@@ -89,8 +90,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Header CTA Button matching template purple-blue gradient pill */}
+          {/* Header Actions: Theme Toggle + CTA Button */}
           <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <button
               type="button"
               onClick={(e) => handleNavClick(e, "contact")}
@@ -100,14 +102,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900"
-            aria-label="Toggle Navigation"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Actions: Theme Toggle + Mobile Menu Toggle */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+              aria-label="Toggle Navigation"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -118,7 +123,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-slate-200 shadow-xl"
+            className="md:hidden bg-white dark:bg-[#0A0F1D] border-b border-slate-200 dark:border-slate-800 shadow-xl"
           >
             <div className="px-4 pt-4 pb-6 space-y-2">
               {navLinks.map((link) => {
@@ -130,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className={`block w-full text-left px-4 py-2.5 text-sm font-semibold rounded-xl transition-all ${
                       isActive
                         ? "bg-[#0066FF] text-white font-bold"
-                        : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                        : "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"
                     }`}
                   >
                     {link.label}

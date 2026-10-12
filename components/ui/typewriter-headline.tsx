@@ -30,11 +30,11 @@ export const TypewriterHeadline: React.FC<TypewriterHeadlineProps> = ({
 
   return (
     <div className="space-y-3">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.12] max-w-xl uppercase">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.6rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15] max-w-lg uppercase">
         MORE VISIBILITY. <br />
-        <span className="text-slate-900 font-black">BETTER LEADS.&nbsp;</span>
+        <span className="text-slate-900 dark:text-white font-black">BETTER LEADS.&nbsp;</span>
         <br />
-        <span className="relative inline-flex items-center h-[1.15em] min-h-[1.15em] overflow-hidden text-[#0066FF] font-black align-bottom">
+        <span className="relative inline-flex items-center h-[1.15em] min-h-[1.15em] overflow-hidden text-[#0066FF] dark:text-[#38BDF8] font-black align-bottom">
           <AnimatePresence mode="popLayout">
             <motion.span
               key={index}
@@ -42,7 +42,7 @@ export const TypewriterHeadline: React.FC<TypewriterHeadlineProps> = ({
               animate={{ opacity: 1, y: "0%" }}
               exit={{ opacity: 0, y: "-100%" }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-block text-[#0066FF] font-black whitespace-nowrap"
+              className="inline-block text-[#0066FF] dark:text-[#38BDF8] font-black whitespace-nowrap"
             >
               {phrases[index]}
             </motion.span>

@@ -11,39 +11,39 @@ export const StatsBar = () => {
       value: "45+",
       label: "Enterprise Projects",
       subtext: "Full-Stack Web & SEO Audits",
-      color: "text-[#0066FF]",
-      bg: "bg-blue-50 border-blue-100",
+      color: "text-[#0066FF] dark:text-blue-400",
+      bg: "bg-blue-50 dark:bg-blue-950/40 border-blue-100 dark:border-blue-900/50",
     },
     {
       icon: TrendingUp,
       value: "+340%",
       label: "Organic Traffic Growth",
       subtext: "90-Day Search Performance Scaling",
-      color: "text-cyan-700",
-      bg: "bg-cyan-50 border-cyan-100",
+      color: "text-cyan-700 dark:text-cyan-400",
+      bg: "bg-cyan-50 dark:bg-cyan-950/40 border-cyan-100 dark:border-cyan-900/50",
     },
     {
       icon: Zap,
       value: "99/100",
       label: "Core Web Vitals",
       subtext: "Sub-Second LCP Performance",
-      color: "text-emerald-700",
-      bg: "bg-emerald-50 border-emerald-100",
+      color: "text-emerald-700 dark:text-emerald-400",
+      bg: "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-100 dark:border-emerald-900/50",
     },
     {
       icon: Users,
       value: "99.4%",
       label: "Client Retention Rate",
       subtext: "Long-Term Corporate Contracts",
-      color: "text-amber-700",
-      bg: "bg-amber-50 border-amber-100",
+      color: "text-amber-700 dark:text-amber-400",
+      bg: "bg-amber-50 dark:bg-amber-950/40 border-amber-100 dark:border-amber-900/50",
     },
   ];
 
   return (
     <section className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      <div className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 shadow-lg">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+      <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 dark:divide-slate-800">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -62,10 +62,10 @@ export const StatsBar = () => {
                   <div className={`text-2xl sm:text-3xl font-black tracking-tight ${stat.color}`}>
                     {stat.value}
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">
+                  <div className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-0.5">
                     {stat.label}
                   </div>
-                  <div className="text-[11px] text-slate-500 font-medium mt-0.5">
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">
                     {stat.subtext}
                   </div>
                 </div>

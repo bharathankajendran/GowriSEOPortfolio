@@ -124,13 +124,13 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
     <section id="projects" className="py-20 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center space-y-4 mb-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-[#0066FF] border border-blue-200 uppercase tracking-wider">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-[#0066FF] dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" /> FEATURED PROJECTS &amp; CAMPAIGNS
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Work built around <span className="text-[#0066FF]">growth goals.</span>
+        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Work built around <span className="text-[#0066FF] dark:text-[#38BDF8]">growth goals.</span>
         </h2>
-        <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
           Every business has a different starting point. Our projects combine strategy, creative execution, targeting, optimization, and reporting to solve the marketing challenges that matter most.
         </p>
       </div>
@@ -148,7 +148,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 isActive
                   ? "bg-[#0066FF] text-white shadow-md font-bold"
-                  : "bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:bg-slate-50"
+                  : "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:text-[#0066FF] dark:hover:text-[#38BDF8] border border-slate-300 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-600 hover:bg-blue-50/60 dark:hover:bg-slate-800 shadow-xs"
               }`}
             >
               <Icon className="w-4 h-4" />

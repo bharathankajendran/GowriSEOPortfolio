@@ -26,28 +26,28 @@ export const AboutSection = () => {
     <section id="about" className="py-20 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Hero Header */}
       <div className="text-center space-y-4 mb-16">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-[#0066FF] border border-blue-200 uppercase tracking-wider">
+        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-[#0066FF] dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" /> ABOUT G2VERTEX
         </span>
-        <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
-          Growth partners for businesses <span className="text-[#0066FF]">ready to move.</span>
+        <h1 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+          Growth partners for businesses <span className="text-[#0066FF] dark:text-[#38BDF8]">ready to move.</span>
         </h1>
-        <p className="text-slate-600 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
           G2VERTEX is a modern digital growth agency built for businesses that want more than activity—they want progress. We help brands strengthen their online presence, connect with the right audience, and generate opportunities through smart, measurable marketing.
         </p>
       </div>
 
       {/* Story Section */}
-      <div className="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-12 mb-16">
+      <div className="rounded-3xl bg-blue-50/70 dark:bg-slate-900/60 border border-blue-200/80 dark:border-slate-800 p-8 sm:p-12 mb-16">
         <div className="max-w-4xl mx-auto space-y-4 text-center md:text-left">
-          <span className="text-xs font-bold text-[#0066FF] uppercase tracking-widest block">OUR STORY</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <span className="text-xs font-bold text-[#0066FF] dark:text-blue-400 uppercase tracking-widest block">OUR STORY</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Built to turn marketing channels into practical growth engines.
           </h2>
-          <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
             The digital landscape is crowded. Businesses do not need more random posts, generic ads, or reports filled with numbers that do not lead anywhere. They need a clear strategy, strong execution, and a partner who understands that marketing must contribute to growth.
           </p>
-          <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
             That is why G2VERTEX exists: to turn marketing channels into practical engines for visibility, conversations, leads, and long-term momentum.
           </p>
         </div>
@@ -56,8 +56,8 @@ export const AboutSection = () => {
       {/* Our Approach (5 Steps) */}
       <div className="space-y-8 mb-16">
         <div className="text-center space-y-2">
-          <span className="text-xs font-bold text-[#0066FF] uppercase tracking-widest block">OUR PROCESS</span>
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900">Our 5-Step Growth Approach</h3>
+          <span className="text-xs font-bold text-[#0066FF] dark:text-blue-400 uppercase tracking-widest block">OUR PROCESS</span>
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Our 5-Step Growth Approach</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -67,11 +67,11 @@ export const AboutSection = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2 hover:border-blue-300 transition-all"
+              className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2 hover:border-blue-300 transition-all"
             >
-              <div className="text-xl font-black text-[#0066FF]">{s.step}</div>
-              <h4 className="text-sm font-extrabold text-slate-900">{s.title}</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">{s.text}</p>
+              <div className="text-xl font-black text-[#0066FF] dark:text-blue-400">{s.step}</div>
+              <h4 className="text-sm font-extrabold text-slate-900 dark:text-white">{s.title}</h4>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{s.text}</p>
             </motion.div>
           ))}
         </div>
@@ -80,20 +80,20 @@ export const AboutSection = () => {
       {/* Our Values */}
       <div className="space-y-8 mb-16">
         <div className="text-center space-y-2">
-          <span className="text-xs font-bold text-[#0066FF] uppercase tracking-widest block">GUIDING PRINCIPLES</span>
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900">Our Core Values</h3>
+          <span className="text-xs font-bold text-[#0066FF] dark:text-blue-400 uppercase tracking-widest block">GUIDING PRINCIPLES</span>
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Our Core Values</h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((v) => {
             const Icon = v.icon;
             return (
-              <div key={v.name} className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-[#0066FF] flex items-center justify-center">
+              <div key={v.name} className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 text-[#0066FF] dark:text-blue-400 flex items-center justify-center">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h4 className="text-base font-extrabold text-slate-900">{v.name}</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">{v.text}</p>
+                <h4 className="text-base font-extrabold text-slate-900 dark:text-white">{v.name}</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{v.text}</p>
               </div>
             );
           })}

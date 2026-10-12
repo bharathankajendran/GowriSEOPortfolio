@@ -249,13 +249,13 @@ export const ContactSection = () => {
 
       {/* Section Header */}
       <div className="text-center space-y-4 mb-12">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-[#0066FF] border border-blue-200 uppercase tracking-wider">
+        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-[#0066FF] dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" /> START A CONVERSATION
         </span>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Let&apos;s turn your next goal into a <span className="text-[#0066FF]">growth plan.</span>
+        <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Let&apos;s turn your next goal into a <span className="text-[#0066FF] dark:text-[#38BDF8]">growth plan.</span>
         </h2>
-        <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
           Tell us where you want to grow, what is getting in the way, and what success looks like. We will help you identify the best next move.
         </p>
       </div>
@@ -263,31 +263,31 @@ export const ContactSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Direct Info & Reassurance */}
         <div className="lg:col-span-5 space-y-5">
-          <GlassCard className="p-7 space-y-5 bg-white border-slate-200 shadow-md">
+          <GlassCard className="p-7 space-y-5 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 shadow-md">
             <div
               onClick={triggerGuaranteePopup}
               className="flex items-center justify-between cursor-pointer group"
               title="Click to view our No Pressure Guarantee"
             >
-              <h3 className="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-[#0066FF] transition-colors">
+              <h3 className="text-[23px] font-extrabold text-slate-900 dark:text-white tracking-tight group-hover:text-[#0066FF] dark:group-hover:text-[#38BDF8] transition-colors">
                 Direct Contact Details
               </h3>
-              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1 group-hover:bg-emerald-100 transition-colors shadow-xs">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Guarantee
+              <span className="text-[13px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1 rounded-full flex items-center gap-1 group-hover:bg-emerald-100 transition-colors shadow-xs">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Guarantee
               </span>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed font-normal">
+            <p className="text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
               Whether you need more qualified leads, better search visibility, or high-converting ad campaigns, G2VERTEX is ready to partner with you.
             </p>
 
-            <div className="space-y-3.5 pt-4 border-t border-slate-100">
+            <div className="space-y-3.5 pt-4 border-t border-slate-100 dark:border-slate-800">
               {/* Direct Phone */}
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
-                  <Phone className="w-4 h-4 text-[#0066FF]" />
+                <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-[#0066FF] dark:text-blue-400" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">DIRECT MOBILE / PHONE</span>
+                  <span className="text-[11px] text-slate-400 dark:text-slate-500 font-bold block uppercase tracking-wider">DIRECT MOBILE / PHONE</span>
                   <a
                     href="tel:+919385219979"
                     onClick={(e) => {
@@ -295,7 +295,7 @@ export const ContactSection = () => {
                       triggerGuaranteePopup();
                       safeOpenUrl("tel:+919385219979");
                     }}
-                    className="text-xs font-bold text-slate-900 hover:text-[#0066FF] transition-colors cursor-pointer"
+                    className="text-[15px] font-bold text-slate-900 dark:text-white hover:text-[#0066FF] dark:hover:text-[#38BDF8] transition-colors cursor-pointer"
                   >
                     +91 93852 19979
                   </a>
@@ -304,11 +304,11 @@ export const ContactSection = () => {
 
               {/* Direct Email */}
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
-                  <Mail className="w-4 h-4 text-[#0066FF]" />
+                <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 text-[#0066FF] dark:text-blue-400" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">DIRECT EMAIL</span>
+                  <span className="text-[11px] text-slate-400 dark:text-slate-500 font-bold block uppercase tracking-wider">DIRECT EMAIL</span>
                   <a
                     href="mailto:contact@g2vertex.com"
                     onClick={(e) => {
@@ -316,7 +316,7 @@ export const ContactSection = () => {
                       triggerGuaranteePopup();
                       safeOpenUrl("mailto:contact@g2vertex.com");
                     }}
-                    className="text-xs font-bold text-slate-900 hover:text-[#0066FF] transition-colors cursor-pointer"
+                    className="text-[15px] font-bold text-slate-900 dark:text-white hover:text-[#0066FF] dark:hover:text-[#38BDF8] transition-colors cursor-pointer"
                   >
                     contact@g2vertex.com
                   </a>
@@ -325,16 +325,16 @@ export const ContactSection = () => {
 
               {/* LinkedIn Company */}
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
-                  <Linkedin className="w-4 h-4 text-[#0066FF]" />
+                <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 flex items-center justify-center shrink-0">
+                  <Linkedin className="w-4 h-4 text-[#0066FF] dark:text-blue-400" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">OFFICIAL LINKEDIN</span>
+                  <span className="text-[11px] text-slate-400 dark:text-slate-500 font-bold block uppercase tracking-wider">OFFICIAL LINKEDIN</span>
                   <a
                     href="https://www.linkedin.com/company/g2-vertex/"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-xs font-bold text-slate-900 hover:text-[#0066FF] transition-colors"
+                    className="text-[15px] font-bold text-slate-900 dark:text-white hover:text-[#0066FF] dark:hover:text-[#38BDF8] transition-colors"
                   >
                     linkedin.com/company/g2-vertex
                   </a>
@@ -343,23 +343,23 @@ export const ContactSection = () => {
 
               {/* Response Time */}
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0">
-                  <Clock className="w-4 h-4 text-sky-600" />
+                <div className="w-9 h-9 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/50 flex items-center justify-center shrink-0">
+                  <Clock className="w-4 h-4 text-sky-600 dark:text-sky-400" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">RESPONSE TIME</span>
-                  <span className="text-xs font-bold text-slate-900">Under 24 Hours</span>
+                  <span className="text-[11px] text-slate-400 dark:text-slate-500 font-bold block uppercase tracking-wider">RESPONSE TIME</span>
+                  <span className="text-[15px] font-bold text-slate-900 dark:text-white">Under 24 Hours</span>
                 </div>
               </div>
 
               {/* Location */}
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4 text-emerald-600" />
+                <div className="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">LOCATION</span>
-                  <span className="text-xs font-bold text-slate-900">Global Remote Agency</span>
+                  <span className="text-[11px] text-slate-400 dark:text-slate-500 font-bold block uppercase tracking-wider">LOCATION</span>
+                  <span className="text-[15px] font-bold text-slate-900 dark:text-white">Global Remote Agency</span>
                 </div>
               </div>
             </div>
@@ -372,9 +372,9 @@ export const ContactSection = () => {
                   triggerGuaranteePopup();
                   safeOpenUrl("mailto:contact@g2vertex.com");
                 }}
-                className="flex-1 py-2.5 px-3 rounded-xl bg-[#0066FF] text-white text-xs font-bold text-center hover:bg-blue-600 transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                className="flex-1 py-3 px-3 rounded-xl bg-[#0066FF] text-white text-[15px] font-bold text-center hover:bg-blue-600 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Mail className="w-3.5 h-3.5" /> Email Directly
+                <Mail className="w-4 h-4" /> Email Directly
               </button>
               <button
                 type="button"
@@ -382,9 +382,9 @@ export const ContactSection = () => {
                   triggerGuaranteePopup();
                   safeOpenUrl("tel:+919385219979");
                 }}
-                className="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold text-center hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="flex-1 py-3 px-3 rounded-xl bg-white dark:bg-slate-900 border-2 border-slate-900 dark:border-slate-700 text-slate-900 dark:text-white text-[15px] font-bold text-center hover:bg-slate-900 dark:hover:bg-slate-800 hover:text-white transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
               >
-                <Phone className="w-3.5 h-3.5 text-[#0066FF]" /> Call Directly
+                <Phone className="w-4 h-4 text-[#0066FF] dark:text-blue-400" /> Call Directly
               </button>
             </div>
           </GlassCard>
@@ -392,23 +392,23 @@ export const ContactSection = () => {
 
         {/* Right Column: Contact Form */}
         <div className="lg:col-span-7">
-          <GlassCard className="p-7 sm:p-8 bg-white border-slate-200 shadow-md">
+          <GlassCard className="p-7 sm:p-8 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 shadow-md">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              {/* Service Pills */}
+              {/* Service Pills / Tabs */}
               <div>
-                <label className="block text-[11px] uppercase text-slate-600 font-bold mb-2 tracking-wider">
+                <label className="block text-[14px] uppercase text-slate-600 dark:text-slate-300 font-bold mb-2.5 tracking-wider">
                   What do you need help with?
                 </label>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {serviceOptions.map((opt) => (
                     <button
                       key={opt}
                       type="button"
                       onClick={() => setValue("service", opt)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-3.5 py-2 rounded-lg text-[15px] font-semibold transition-all cursor-pointer ${
                         selectedService === opt
-                          ? "bg-[#0066FF] text-white shadow-sm font-bold"
-                          : "bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200"
+                          ? "bg-[#0066FF] text-white shadow-md font-bold"
+                          : "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:text-[#0066FF] dark:hover:text-[#38BDF8] border border-slate-300 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-600 hover:bg-blue-50/60 dark:hover:bg-slate-800 shadow-xs"
                       }`}
                     >
                       {opt}
@@ -420,7 +420,7 @@ export const ContactSection = () => {
               {/* Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
+                  <label htmlFor="name" className="block text-[13px] uppercase text-slate-600 dark:text-slate-300 font-bold mb-1.5 tracking-wider">
                     Full Name *
                   </label>
                   <input
@@ -428,17 +428,17 @@ export const ContactSection = () => {
                     type="text"
                     placeholder="e.g. Alex Vance"
                     {...register("name")}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2.5 text-[15px] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-slate-900 transition-colors"
                   />
                   {errors.name && (
-                    <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1 font-medium">
-                      <AlertCircle className="w-3 h-3" /> {errors.name.message}
+                    <p className="text-[12px] text-red-500 mt-1 flex items-center gap-1 font-medium">
+                      <AlertCircle className="w-3.5 h-3.5" /> {errors.name.message}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
+                  <label htmlFor="email" className="block text-[13px] uppercase text-slate-600 dark:text-slate-300 font-bold mb-1.5 tracking-wider">
                     Work Email *
                   </label>
                   <input
@@ -446,11 +446,11 @@ export const ContactSection = () => {
                     type="email"
                     placeholder="alex@company.com"
                     {...register("email")}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2.5 text-[15px] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-slate-900 transition-colors"
                   />
                   {errors.email && (
-                    <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1 font-medium">
-                      <AlertCircle className="w-3 h-3" /> {errors.email.message}
+                    <p className="text-[12px] text-red-500 mt-1 flex items-center gap-1 font-medium">
+                      <AlertCircle className="w-3.5 h-3.5" /> {errors.email.message}
                     </p>
                   )}
                 </div>
@@ -458,7 +458,7 @@ export const ContactSection = () => {
 
               {/* Subject */}
               <div>
-                <label htmlFor="subject" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
+                <label htmlFor="subject" className="block text-[13px] uppercase text-slate-600 dark:text-slate-300 font-bold mb-1.5 tracking-wider">
                   Business Name / Website URL *
                 </label>
                 <input
@@ -466,18 +466,18 @@ export const ContactSection = () => {
                   type="text"
                   placeholder="e.g. Acme Corp (acme.com)"
                   {...register("subject")}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2.5 text-[15px] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-slate-900 transition-colors"
                 />
                 {errors.subject && (
-                  <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1 font-medium">
-                    <AlertCircle className="w-3 h-3" /> {errors.subject.message}
+                  <p className="text-[12px] text-red-500 mt-1 flex items-center gap-1 font-medium">
+                    <AlertCircle className="w-3.5 h-3.5" /> {errors.subject.message}
                   </p>
                 )}
               </div>
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-[11px] uppercase text-slate-600 font-bold mb-1.5 tracking-wider">
+                <label htmlFor="message" className="block text-[13px] uppercase text-slate-600 dark:text-slate-300 font-bold mb-1.5 tracking-wider">
                   Tell us about your growth goals *
                 </label>
                 <textarea
@@ -485,11 +485,11 @@ export const ContactSection = () => {
                   rows={4}
                   placeholder="Where do you want to grow, what is getting in the way, and what does success look like?"
                   {...register("message")}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2.5 text-[15px] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-slate-900 transition-colors"
                 />
                 {errors.message && (
-                  <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1 font-medium">
-                    <AlertCircle className="w-3 h-3" /> {errors.message.message}
+                  <p className="text-[12px] text-red-500 mt-1 flex items-center gap-1 font-medium">
+                    <AlertCircle className="w-3.5 h-3.5" /> {errors.message.message}
                   </p>
                 )}
               </div>
@@ -514,7 +514,7 @@ export const ContactSection = () => {
                 variant="primary"
                 size="md"
                 disabled={isSubmitting}
-                className="w-full font-bold text-sm"
+                className="w-full font-bold text-[15px] py-3"
               >
                 {isSubmitting ? (
                   <>

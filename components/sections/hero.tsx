@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -20,24 +19,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onTabChange }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] pt-28 sm:pt-36 pb-16 lg:pb-24 flex items-center justify-center bg-white overflow-hidden"
+      className="relative min-h-[92vh] pt-28 sm:pt-36 pb-16 lg:pb-24 flex items-center justify-center bg-white dark:bg-[#0A0F1D] overflow-hidden transition-colors duration-200"
     >
-      {/* Soft Ambient Background Elements matching template */}
-      <div className="absolute top-0 right-0 w-[55vw] h-[55vw] max-w-[800px] max-h-[800px] rounded-full bg-gradient-to-br from-blue-100/50 via-sky-50/40 to-transparent blur-3xl pointer-events-none -z-10 transform translate-x-1/4 -translate-y-1/4" />
-      <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] rounded-full bg-gradient-to-tr from-indigo-50/40 via-blue-50/30 to-transparent blur-3xl pointer-events-none -z-10 transform -translate-x-1/4 translate-y-1/4" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 xl:gap-14 items-center">
           {/* Left Column: Headline, Description & Template Pill Action Buttons */}
-          <div className="lg:col-span-6 text-left space-y-6 sm:space-y-7">
+          <div className="lg:col-span-7 xl:col-span-6 text-left space-y-6 sm:space-y-7 z-10">
             {/* Top Badge */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-50 text-[#0066FF] border border-blue-200/80 shadow-xs uppercase tracking-wider"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-[#0066FF] dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 uppercase tracking-wider"
             >
-              <Sparkles className="w-3.5 h-3.5" /> Performance Digital Marketing
+              Performance Digital Marketing
             </motion.div>
 
             {/* Main Headline */}
@@ -54,9 +50,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onTabChange }) => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed font-normal"
+              className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed font-normal"
             >
-              <span className="font-bold text-slate-900">G2VERTEX</span> drives business growth through digital marketing and lead generation. We build qualified pipeline engines, high-intent SEO systems, and scalable paid media campaigns. Zero vanity metrics, only verifiable business outcomes.
+              <span className="font-bold text-slate-900 dark:text-white">G2VERTEX</span> drives business growth through digital marketing and lead generation. We build qualified pipeline engines, high-intent SEO systems, and scalable paid media campaigns. Zero vanity metrics, only verifiable business outcomes.
             </motion.p>
 
             {/* Trust / Value Strip from Content */}
@@ -64,16 +60,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onTabChange }) => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="flex flex-wrap items-center gap-2.5 text-xs font-semibold text-slate-700"
+              className="flex flex-wrap items-center gap-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300"
             >
-              <span className="px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 shadow-xs flex items-center gap-1.5">
-                <Target className="w-3.5 h-3.5 text-[#0066FF]" /> Strategy-led campaigns
+              <span className="px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-blue-200/90 dark:border-slate-800 shadow-xs flex items-center gap-1.5 text-slate-800 dark:text-slate-200 hover:border-blue-400 transition-all">
+                <Target className="w-3.5 h-3.5 text-[#0066FF] dark:text-blue-400" /> Strategy-led campaigns
               </span>
-              <span className="px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 shadow-xs flex items-center gap-1.5">
-                <BarChart3 className="w-3.5 h-3.5 text-emerald-600" /> Clear reporting
+              <span className="px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-emerald-200/90 dark:border-slate-800 shadow-xs flex items-center gap-1.5 text-slate-800 dark:text-slate-200 hover:border-emerald-400 transition-all">
+                <BarChart3 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Clear reporting
               </span>
-              <span className="px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 shadow-xs flex items-center gap-1.5">
-                <TrendingUp className="w-3.5 h-3.5 text-cyan-600" /> Qualified lead focus
+              <span className="px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-cyan-200/90 dark:border-slate-800 shadow-xs flex items-center gap-1.5 text-slate-800 dark:text-slate-200 hover:border-cyan-400 transition-all">
+                <TrendingUp className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" /> Qualified lead focus
               </span>
             </motion.div>
 
@@ -91,7 +87,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onTabChange }) => {
                     ? onTabChange("contact")
                     : (window.location.href = "/?tab=contact")
                 }
-                className="rounded-full px-8 py-3.5 bg-gradient-to-r from-[#0088FF] to-[#0055FF] hover:from-[#0077EE] hover:to-[#0044EE] text-white font-bold text-sm shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="rounded-full px-8 py-3.5 bg-[#0066FF] hover:bg-blue-700 text-white font-bold text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 Book a Growth Call <ArrowUpRight className="w-4 h-4" />
               </button>
@@ -103,7 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onTabChange }) => {
                     ? onTabChange("projects")
                     : (window.location.href = "/?tab=projects")
                 }
-                className="rounded-full px-8 py-3.5 bg-white border border-slate-200 text-slate-700 hover:text-[#0066FF] hover:border-blue-300 font-bold text-sm shadow-xs hover:bg-slate-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="rounded-full px-8 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-[#0066FF] dark:hover:text-[#38BDF8] hover:border-blue-300 font-bold text-sm shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 View Our Work
               </button>
@@ -115,17 +111,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onTabChange }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-6 w-full relative flex items-center justify-center"
+            className="lg:col-span-5 xl:col-span-6 w-full relative flex items-center justify-center lg:justify-end"
           >
-            <div className="relative w-full aspect-[16/10] max-w-xl lg:max-w-none">
-              <Image
-                src="/images/LandingPage.gif"
-
+            <div className="relative w-full aspect-[16/10] max-w-md lg:max-w-lg xl:max-w-xl">
+              <img
+                src="/images/LandingPage-clean.gif"
                 alt="G2 VERTEX Collaborative Digital Growth & Teamwork Strategy"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                className="object-contain object-center select-none"
+                className="w-full h-full object-contain object-center lg:object-right select-none"
+                loading="eager"
               />
             </div>
           </motion.div>

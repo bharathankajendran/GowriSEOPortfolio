@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Eye, Sparkles, ArrowUpRight } from "lucide-react";
@@ -53,12 +52,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       <GlassCard className="flex flex-col h-full group p-0 overflow-hidden border-slate-200 bg-white hover:border-blue-300 hover:shadow-xl">
         {/* Thumbnail Image Header */}
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 border-b border-slate-200">
-          <Image
+          <img
             src={project.thumbnailUrl}
             alt={project.title}
-            fill
-          //className="object-cover group-hover:scale-105 transition-transform duration-500"
-          //sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60" />
 
@@ -95,25 +93,25 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <div>
             <h3
               onClick={() => onQuickView(project)}
-              className="text-lg font-extrabold text-slate-900 group-hover:text-[#0066FF] transition-colors cursor-pointer"
+              className="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-[#38BDF8] transition-colors cursor-pointer"
             >
               {project.title}
             </h3>
-            <p className="text-xs text-[#0066FF] font-semibold mt-1 line-clamp-1">
+            <p className="text-xs text-[#0066FF] dark:text-blue-400 font-semibold mt-1 line-clamp-1">
               {project.tagline}
             </p>
-            <p className="text-xs text-slate-600 mt-2.5 line-clamp-2 leading-relaxed font-normal">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-2.5 line-clamp-2 leading-relaxed font-normal">
               {project.description}
             </p>
           </div>
 
           {/* Key Metric Tags */}
           {parsedMetrics.length > 0 && (
-            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
               {parsedMetrics.slice(0, 2).map((m, idx) => (
-                <div key={idx} className="bg-slate-50 p-2 rounded-lg text-center border border-slate-200/60">
-                  <div className="text-[10px] text-slate-500 font-semibold">{m.label}</div>
-                  <div className="text-xs font-black text-[#0066FF] mt-0.5">{m.value}</div>
+                <div key={idx} className="bg-blue-50/60 dark:bg-slate-800/60 p-2 rounded-lg text-center border border-blue-100 dark:border-slate-700">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">{m.label}</div>
+                  <div className="text-xs font-black text-[#0066FF] dark:text-blue-400 mt-0.5">{m.value}</div>
                 </div>
               ))}
             </div>
@@ -134,11 +132,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
 
           {/* Card Footer Links */}
-          <div className="pt-3 border-t border-slate-100 flex items-center justify-end">
+          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end">
             <button
               type="button"
               onClick={() => onQuickView(project)}
-              className="text-xs text-[#0066FF] hover:underline font-bold flex items-center gap-1 cursor-pointer"
+              className="text-xs text-[#0066FF] dark:text-blue-400 hover:underline font-bold flex items-center gap-1 cursor-pointer"
             >
               Read Case Study <ArrowUpRight className="w-3.5 h-3.5" />
             </button>

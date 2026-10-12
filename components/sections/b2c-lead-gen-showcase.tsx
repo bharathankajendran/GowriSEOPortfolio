@@ -182,7 +182,7 @@ export const B2CLeadGenShowcase = () => {
       </div>
 
       {/* Who We Help Section */}
-      <div className="space-y-6 rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-10">
+      <div className="space-y-6 rounded-3xl bg-blue-50/70 border border-blue-200/80 p-8 sm:p-10">
         <div className="text-center space-y-2">
           <span className="text-xs font-bold text-[#0066FF] uppercase tracking-widest block">
             AUDIENCE SEGMENTS

@@ -77,8 +77,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");var d=t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches);if(d){document.documentElement.classList.add("dark");}else{document.documentElement.classList.remove("dark");}}catch(e){}})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -86,7 +91,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${outfit.variable} font-sans bg-[#0A0A0C] text-slate-100 antialiased selection:bg-[#0f62fe] selection:text-white`}
+        className={`${outfit.variable} font-sans bg-white dark:bg-[#0A0F1D] text-slate-900 dark:text-slate-100 antialiased selection:bg-[#0f62fe] selection:text-white transition-colors duration-200`}
       >
         {children}
       </body>
